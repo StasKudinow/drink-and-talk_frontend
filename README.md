@@ -14,7 +14,10 @@ npm run serve
 ```
 npm run build
 ```
-
+#### Preview tailwind config
+```
+npm run tailwind-config-viewer
+```
 ### Lints and fixes files
 ```
 npm run lint
