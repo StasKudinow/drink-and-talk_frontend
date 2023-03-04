@@ -1,22 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px'
+      'xl': '1440px'
     },
     colors: {
       'black': '#232323',
       'orange': '#C97800',
       'error-red': '#F50B0B',
-      'text-black': '#101828'
+      'text-black': '#101828',
+      'text-white': '#F8F8F8'
     },
     spacing: {
-      default: 5
+      default: '5'
     },
     opacity: {
       '0': '0',
@@ -45,9 +42,17 @@ module.exports = {
       'h3-web': '30px',
       'h3-mob': '25px',
       'text-sm-web': '20px',
-      'text-sm-mob': '18px',
-      'text-xsm-web': '18px',
-      'text-xsm-mob': '18px'
+      'text-xsm-all': '18px'
+    },
+    lineHeight: {
+      'h1-web': '60px',
+      'h2-web': '40px',
+      'h3-web': '44px',
+      'text-sm-web': '44px',
+      'all-mob': '32px'
+    },
+    boxShadow: {
+      'button-shadow': 'inset 7px 6px 4px rgba(0, 0, 0, .25)'
     },
     extend: {},
   },
