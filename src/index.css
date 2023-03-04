@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Gill Sans";
+    font-weight: 400;
+    font-style: normal;
+    src: url(./fonts/GillSansC.woff) format("woff"),
+         url(./fonts/GillSansC.woff2) format("woff2");
+  }
+
+  @font-face {
+    font-family: "Gill Sans";
+    font-weight: 300;
+    font-style: light;
+    src: url(./fonts/GillSansLightC.woff) format("woff"),
+         url(./fonts/GillSansLightC.woff2) format("woff2");
+  }
+}

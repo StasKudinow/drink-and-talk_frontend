@@ -1,0 +1,59 @@
+// @import url(./vendor/fonts.scss);
+
+// $colorWhite: #F8F8F8;
+// $colorBlack: #232323;
+// $colorOrange: #C97800;
+// $colorRed: #F50B0B;
+// $colorTextBlack: #101828;
+
+// $mainBlockWidth: 553px;
+
+// $fontFamily: 'Gill sans', sans-serif;
+// $fontWeightNormal: 400;
+// $fontSizeH1Web: 150px;
+
+
+// body {
+//   margin: 0;
+// }
+
+// .app {
+//   max-width: 1440px;
+//   min-width: 320px;
+//   min-height: 100vh;
+//   margin: 0 auto;
+//   font-family: $fontFamily;
+//   background-color: $colorWhite;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   -webkit-text-size-adjust: 100%;
+//   -ms-text-size-adjust: 100%;
+//   -moz-text-size-adjust: 100%;
+// }
+
+// .promo {
+//   max-width: 1350px;
+//   padding: 14px 52.5px 100px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+
+//   div {
+//     width: $mainBlockWidth;
+//     display: flex;
+//     flex-direction: column;
+
+//     h1 {
+//       margin: 0;
+//       font-size: $fontSizeH1Web;
+//       font-weight: $fontWeightNormal;
+//       line-height: 172px;
+//       color: $colorTextBlack;
+//     }
+//   }
+
+//   img {
+//     width: $mainBlockWidth;
+//     height: 794.36px;
+//   }
+// }

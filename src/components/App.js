@@ -1,13 +1,10 @@
-import Promo from './Promo';
+import Main from "./Main";
 
 function App() {
 
   return (
-    <div className="">
-      <Promo />
-      <h1 className="orange sans font-light underline">
-      Hello world!
-    </h1>
+    <div className="max-w-[100%] min-w-[320px] min-h-[100vh] bg-white font-sans">
+      <Main />
     </div>
   );
 }
