@@ -1,4 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+const spacingScale = 5
+
+function generateSpacings (el) {
+  return [...Array(el + 1).keys()].reduce((accumulator, item) => {
+    accumulator[item] = `${item * spacingScale}px`
+    return accumulator
+  }, {})
+}
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -13,7 +22,7 @@ module.exports = {
       'text-black': '#101828',
     },
     spacing: {
-      '5': '5px',
+      ...generateSpacings(18)
     },
     opacity: {
       '0': '0',
