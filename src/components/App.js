@@ -1,4 +1,4 @@
-import Main from "./Main";
+import Main from "./Main"
 
 function App() {
 
@@ -6,7 +6,7 @@ function App() {
     <div className="max-w-[100%] min-w-[320px] min-h-[100vh] bg-white font-sans">
       <Main />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

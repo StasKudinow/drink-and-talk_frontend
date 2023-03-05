@@ -1,21 +1,26 @@
-import mainImage from "../images/main-image.png";
+import mainImage from "../images/main-image.png"
+
+import Button from "./Button"
 
 function Promo() {
 
   return (
-    <section className="container mx-auto px-[52.5px] pt-[14px] pb-[100px] flex flex-raw justify-between">
-      <div className="max-w-[553px] flex flex-col pt-[107px] ml-[115px]">
-        <h1 className="mb-[-13px] font-normal text-h1-web leading-[172px] text-black">Drink</h1>
-        <div className="mb-[35px] flex flex-raw pl-[160px] gap-[26px]">
-          <p className="font-normal text-[110px] leading-[126px] text-black">and</p>
-          <p className="mt-[-6px] font-normal text-[120px] leading-[138px] text-black">Talk</p>
-        </div>
-        <h3 className="max-w-[478px] mb-[30px] font-normal text-h3-web leading-[34px] text-black ">Сервис для общения по видео-связи и душевных разговоров</h3>
-        <button className="w-[352px] h-[76px] rounded-default bg-black font-normal text-h3-web leading-[34px] text-white" type="button">Начать видео - связь</button>
+    <section className="container mx-auto px-[52.5px] pt-[14px] pb-20 flex flex-raw justify-between relative">
+      <div className="w-[914px] h-[587.5px] bg-dots_1 bg-cover absolute top-[148px] left-[52px]" />
+      <div className="max-w-[553px] flex flex-col pt-[107px] ml-23">
+        <h1 className="mb-[-13px] font-normal text-h1-web leading-[172px] text-black">
+          Drink
+          <div className="mb-9 flex flex-raw pl-32 gap-[26px]">
+            <span className="mt-[-14px] text-[110px] leading-[126px]">and</span>
+            <span className="mt-[-19px] text-[120px] leading-[138px] text-white text-stroke">Talk</span>
+          </div>
+        </h1>
+        <h3 className="max-w-[478px] mb-6 font-normal text-h3-web leading-[34px] text-black ">Сервис для общения по видео-связи и душевных разговоров</h3>
+        <Button text="Начать видео - связь" />
       </div>
       <img src={mainImage} alt="main" />
     </section>
-  );
+  )
 }
 
-export default Promo;
+export default Promo

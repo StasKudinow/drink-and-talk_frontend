@@ -19,3 +19,7 @@
          url(./fonts/GillSansLightC.woff2) format("woff2");
   }
 }
+
+.text-stroke {
+  -webkit-text-stroke: 3px #232323;
+}

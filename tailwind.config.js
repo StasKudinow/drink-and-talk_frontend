@@ -22,7 +22,7 @@ module.exports = {
       'text-black': '#101828',
     },
     spacing: {
-      ...generateSpacings(18)
+      ...generateSpacings(100)
     },
     opacity: {
       '0': '0',
@@ -63,7 +63,12 @@ module.exports = {
     boxShadow: {
       'button-shadow': 'inset 7px 6px 4px rgba(0, 0, 0, .25)',
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'dots_1': 'url(../src/images/dots_1.svg)',
+        'dots_2': 'url(../src/images/dots_2.svg)',
+      }
+    },
   },
   plugins: [],
 }

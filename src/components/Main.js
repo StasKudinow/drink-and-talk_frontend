@@ -1,5 +1,5 @@
-import Promo from './Promo';
-import AboutProject from './AboutProject';
+import Promo from './Promo'
+import AboutProject from './AboutProject'
 
 function Main() {
 
@@ -8,7 +8,7 @@ function Main() {
       <Promo />
       <AboutProject />
     </main>
-  );
+  )
 }
 
-export default Main;
+export default Main
