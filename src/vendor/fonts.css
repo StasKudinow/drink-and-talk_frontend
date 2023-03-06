@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "GillSansC";
+  font-family: "Gill Sans";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../fonts/GillSansC.woff) format("woff"),
-       url(../fonts/GillSansC.woff2) format("woff2");
+  src: url(../fonts/33535gillsansmt.woff) format("woff"),
+       /* url(../fonts/GillSansC.woff2) format("woff2"); */
 }
 
 @font-face {
