@@ -1,12 +1,29 @@
 function Button(props) {
 
+  // @TODO refactoring
+  const buttonClassName = (
+    `
+      ${props.buttonStyle}
+      w-[352px]
+      h-[76px]
+      hover:bg-white
+      font-normal
+      text-h3-web
+      leading-[34px]
+      hover:text-black
+      rounded-default
+      z-10
+      active:shadow-button-shadow
+    `
+  )
+
   return (
     <>
       <button
-        className="w-[352px] h-[76px] rounded-default bg-black font-normal text-h3-web leading-[34px] text-white z-10"
+        className={buttonClassName}
         type="button"
       >
-        {props.text}
+        {props.buttonText}
       </button>
     </>
   )
