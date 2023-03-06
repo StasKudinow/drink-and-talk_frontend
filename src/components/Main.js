@@ -1,14 +1,11 @@
 import Promo from './Promo'
 import AboutProject from './AboutProject'
 
-function Main(props) {
+function Main() {
 
   return (
     <main>
-      <Promo
-        buttonStyle={props.buttonStyle}
-        buttonText={props.buttonText}
-      />
+      <Promo />
       <AboutProject />
     </main>
   )

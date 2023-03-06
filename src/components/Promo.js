@@ -2,7 +2,7 @@ import mainImage from "../images/main-image.png"
 
 import Button from "./Button"
 
-function Promo(props) {
+function Promo() {
 
   return (
     <section className="container mx-auto px-10 pt-3 pb-20 flex flex-raw justify-between relative">
@@ -17,8 +17,9 @@ function Promo(props) {
         </h1>
         <h3 className="max-w-[478px] mb-6 font-normal text-h3-web leading-[34px] text-black ">Сервис для общения по видео-связи и душевных разговоров</h3>
         <Button
-          buttonStyle={props.buttonStyle}
-          buttonText={props.buttonText}
+          buttonColor="black"
+          buttonTextColor="white"
+          buttonText="Начать видео - связь"
         />
       </div>
       <img src={mainImage} alt="main" />
