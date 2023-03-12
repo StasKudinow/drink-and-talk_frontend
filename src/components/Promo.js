@@ -17,8 +17,8 @@ function Promo() {
         </h1>
         <h3 className="max-w-[478px] mb-6 font-normal text-h3-web leading-[34px] text-black ">Сервис для общения по видео-связи и душевных разговоров</h3>
         <Button
-          buttonColor="black"
-          buttonTextColor="white"
+          buttonColor="bg-black"
+          buttonTextColor="text-white"
           buttonText="Начать видео - связь"
         />
       </div>

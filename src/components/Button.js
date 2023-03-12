@@ -5,12 +5,12 @@ function Button(props) {
     `
       w-[352px]
       h-[76px]
-      bg-${props.buttonColor}
+      ${props.buttonColor}
       hover:bg-white
       font-normal
       text-h3-web
       leading-[34px]
-      text-${props.buttonTextColor}
+      ${props.buttonTextColor}
       hover:text-black
       rounded-default
       z-10
