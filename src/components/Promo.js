@@ -19,7 +19,9 @@ function Promo() {
         <Button
           buttonColor="bg-black"
           buttonTextColor="text-white"
+          buttonHover="hover:bg-white"
           buttonText="Начать видео - связь"
+          buttonHoverText="hover:text-black"
         />
       </div>
       <img src={mainImage} alt="main" />

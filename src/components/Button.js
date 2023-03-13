@@ -6,12 +6,12 @@ function Button(props) {
       w-[352px]
       h-[76px]
       ${props.buttonColor}
-      hover:bg-white
+      ${props.buttonHover}
       font-normal
       text-h3-web
       leading-[34px]
       ${props.buttonTextColor}
-      hover:text-black
+      ${props.buttonHoverText}
       rounded-default
       z-10
       active:shadow-button-shadow

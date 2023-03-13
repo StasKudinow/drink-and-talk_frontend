@@ -1,6 +1,7 @@
 import { Switch, Route } from "react-router-dom"
 
 import Main from "./Main"
+import Categories from "./Categories"
 
 function App() {
 
@@ -10,6 +11,10 @@ function App() {
 
         <Route exact path="/">
           <Main />
+        </Route>
+
+        <Route path="/categories">
+          <Categories />
         </Route>
 
       </Switch>
