@@ -3,12 +3,12 @@ import AboutProject from './AboutProject'
 
 function Main() {
 
-  return (
-    <main>
-      <Promo />
-      <AboutProject />
-    </main>
-  )
+	return (
+		<main>
+			<Promo />
+			<AboutProject />
+		</main>
+	)
 }
 
 export default Main

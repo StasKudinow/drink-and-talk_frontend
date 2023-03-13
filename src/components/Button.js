@@ -18,16 +18,16 @@ function Button(props) {
     `
   )
 
-  return (
-    <>
-      <button
-        className={buttonClassName}
-        type="button"
-      >
-        {props.buttonText}
-      </button>
-    </>
-  )
+	return (
+		<>
+			<button
+				className={buttonClassName}
+				type="button"
+			>
+				{props.buttonText}
+			</button>
+		</>
+	)
 }
 
 export default Button
