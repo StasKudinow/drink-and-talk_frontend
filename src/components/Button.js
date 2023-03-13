@@ -1,33 +1,25 @@
 function Button(props) {
-
-//TODO: refactoring
-  const buttonClassName = (
-    `
-      w-[352px]
-      h-[76px]
+  const buttonClassName = `
       ${props.buttonColor}
-      hover:bg-white
+      ${props.buttonTextColor}
+      w-70
+      h-15
       font-normal
       text-h3-web
-      leading-[34px]
-      ${props.buttonTextColor}
-      hover:text-black
+      leading-7
       rounded-default
+      duration-300
       z-10
+      hover:bg-opacity-10
+      hover:text-black
       active:shadow-button-shadow
     `
-  )
 
-	return (
-		<>
-			<button
-				className={buttonClassName}
-				type="button"
-			>
-				{props.buttonText}
-			</button>
-		</>
-	)
+  return (
+    <button className={buttonClassName} type="button">
+      {props.buttonText}
+    </button>
+  )
 }
 
 export default Button
