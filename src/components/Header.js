@@ -7,7 +7,7 @@ function Header() {
       <nav className="container w-widthHeader mx-auto">
         <div>
           <ul className="flex">
-            <li className="text-h3-web ml-28">
+            <li className="text-h3-web ml-33">
               <a href="#About">О сервисе</a>
             </li>
             <li className="text-h3-web ml-28">

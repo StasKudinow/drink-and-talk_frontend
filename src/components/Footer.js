@@ -5,7 +5,7 @@ import instagramIcon from '../images/icons/instagram.svg'
 function Footer() {
 	return (
 		<footer>
-			<div className=" bg-footerColor">
+			<div className="bg-black">
 				<div className="w-bg-size mx-auto">
 					<div className="w-bg-size-container-footer pt-10 pb-10 flex justify-between">
 						<div
