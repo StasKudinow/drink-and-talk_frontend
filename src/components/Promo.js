@@ -27,6 +27,7 @@ function Promo() {
       <img src={mainImage} alt="main" />
     </section>
   )
+
 }
 
 export default Promo
