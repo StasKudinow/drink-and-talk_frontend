@@ -14,6 +14,7 @@ function Selector(props) {
       ${isClicked ? 'bg-green' : 'bg-black'}
       rounded-default
       cursor-pointer
+      duration-300
     `
   )
 

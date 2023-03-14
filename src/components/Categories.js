@@ -56,7 +56,7 @@ function Categories() {
       <Button
         buttonColor="bg-orange"
         buttonTextColor="text-white"
-        buttonHover="hover:opacity-50"
+        buttonHover="hover:bg-opacity-50"
         buttonText="Начать видео - связь"
         buttonHoverText="hover:text-white"
       />

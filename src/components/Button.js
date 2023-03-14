@@ -12,7 +12,6 @@ function Button(props) {
       rounded-default
       duration-300
       z-10
-      hover:bg-opacity-10
       active:shadow-button-shadow
     `
 

@@ -19,7 +19,7 @@ function Promo() {
         <Button
           buttonColor="bg-black"
           buttonTextColor="text-white"
-          buttonHover="hover:bg-white"
+          buttonHover="hover:bg-opacity-10"
           buttonText="Начать видео - связь"
           buttonHoverText="hover:text-black"
         />
