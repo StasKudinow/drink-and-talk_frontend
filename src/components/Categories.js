@@ -1,9 +1,17 @@
+import { useState } from "react"
+
 import categoriesImage from "../images/categories-image.png"
+import { topics, drinks } from "../utils/costants" //изначальные массивы селекторов
 
 import Selector from "./Selector"
 import Button from "./Button"
 
 function Categories() {
+
+  //selectedItems - переменная-массив выбраных пользователем селекторов. Реализация через хук useState. В дальнейшем думаю надо будет прокидывать его на бэк, при сабмите кнопки.
+  const [selectedItems, setSelectedItems] = useState([])
+
+  console.log(selectedItems) //потом удалить. Для наглядности добавления/удаления объектов в массив
 
   return (
     <main className="container mx-auto max-w-[1110px] flex flex-col items-center pt-20 pb-28">
@@ -13,45 +21,35 @@ function Categories() {
         напитков
       </h2>
       <div className="w-[1110px] flex flex-row justify-between mb-15">
-        <div className="max-w-80">
+        <div className="w-82">
           <h3 className="mb-6 font-normal text-[100px] leading-[115px] text-black opacity-50">Тема</h3>
-          <ul className="grid justify-items-start gap-3">
-            <li>
-              <Selector text="Общение на свободные темы" />
-            </li>
-            <li>
-              <Selector text="Общение IT направлений" />
-            </li>
-            <li>
-              <Selector text="Общение о науке" />
-            </li>
-            <li>
-              <Selector text="Общение философов" />
-            </li>
+          <ul className="flex flex-wrap gap-x-5 gap-y-3">
+            {topics.map((topic) => { // мапим обекты селекторов из изначального массива
+              return <li key={topic.id}>
+                <Selector
+                  id={topic.id}
+                  text={topic.theme}
+                  selectedItems={selectedItems}
+                  onSelect={setSelectedItems}
+                />
+              </li>
+            })}
           </ul>
         </div>
-        <img src={categoriesImage} alt="categories" />
-        <div className="max-w-80">
+        <img className="w-50 h-104" src={categoriesImage} alt="categories" />
+        <div className="w-82">
           <h3 className="mb-6 font-normal text-[100px] leading-[115px] text-black text-center opacity-50">Напитки</h3>
-          <ul className="grid grid-cols-2 justify-items-start gap-x-5 gap-y-3">
-            <li>
-              <Selector text="Крепкий алкоголь" />
-            </li>
-            <li>
-              <Selector text="Самогон" />
-            </li>
-            <li>
-              <Selector text="Безалкогольное" />
-            </li>
-            <li>
-              <Selector text="Пиво" />
-            </li>
-            <li>
-              <Selector text="Шампанское" />
-            </li>
-            <li>
-              <Selector text="Вино" />
-            </li>
+          <ul className="flex flex-wrap gap-x-5 gap-y-3">
+            {drinks.map((drink) => { // мапим обекты селекторов из изначального массива
+              return <li key={drink.id}>
+                <Selector
+                  id={drink.id}
+                  text={drink.type}
+                  selectedItems={selectedItems}
+                  onSelect={setSelectedItems}
+                />
+              </li>
+            })}
           </ul>
         </div>
       </div>

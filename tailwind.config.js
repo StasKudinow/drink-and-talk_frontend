@@ -24,12 +24,13 @@ module.exports = {
         black: '#232323',
         orange: '#C97800',
         white: '#F8F8F8',
+        green: '#2DC033',
         'error-red': '#F50B0B',
         'text-black': '#101828',
         footerColor: '#232323',
       },
       spacing: {
-        ...generateSpacings(100),
+        ...generateSpacings(1000),
       },
       opacity: {
         0: '0',
