@@ -3,19 +3,16 @@ function Button(props) {
       ${props.buttonColor}
       ${props.buttonHover}
       ${props.buttonTextColor}
+      ${props.buttonHoverText}
       w-70
       h-15
       font-normal
       text-h3-web
-      leading-[34px]
-      ${props.buttonTextColor}
-      ${props.buttonHoverText}
       leading-7
       rounded-default
       duration-300
       z-10
       hover:bg-opacity-10
-      hover:text-black
       active:shadow-button-shadow
     `
 
