@@ -1,10 +1,9 @@
 import React from 'react'
-// import handleClick from './Scroll'
 
 function Header() {
   return (
     <header className="pt-10">
-      <nav className="container w-widthHeader mx-auto">
+      <nav className="container mx-auto">
         <div>
           <ul className="flex">
             <li className="text-h3-web ml-33">

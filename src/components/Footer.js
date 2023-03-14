@@ -1,6 +1,7 @@
-import facebookIcon from '../images/icons/facebook.svg'
-import telegramIcon from '../images/icons/telegram.svg'
-import instagramIcon from '../images/icons/instagram.svg'
+// import facebookIcon from '../images/icons/facebook.svg'
+// import telegramIcon from '../images/icons/telegram.svg'
+// import instagramIcon from '../images/icons/instagram.svg'
+// Убрано пока нету соцсетей.
 
 function Footer() {
 	return (
@@ -27,7 +28,7 @@ function Footer() {
 								</h3>
 							</div>
 							<div className="flex justify-between pt-5">
-								<a href="#">
+								{/* <a href="#">
 									<img
 										src={facebookIcon}
 										alt="facebook-icon-svg"
@@ -44,14 +45,14 @@ function Footer() {
 										src={instagramIcon}
 										alt="instagram-icon-svg"
 									/>
-								</a>
+								</a> */}
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-	)
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
 }
 
 export default Footer

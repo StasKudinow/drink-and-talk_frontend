@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "tailwind-config-viewer": "tailwind-config-viewer -o"
+    "tailwind": "tailwind-config-viewer -o"
   },
   "eslintConfig": {
     "extends": [
