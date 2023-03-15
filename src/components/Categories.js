@@ -1,6 +1,5 @@
 import { useState } from "react"
 
-import categoriesImage from "../images/categories-image.png"
 import { topics, drinks } from "../utils/costants" //изначальные массивы селекторов
 
 import Selector from "./Selector"
@@ -14,13 +13,13 @@ function Categories() {
   console.log(selectedItems) //потом удалить. Для наглядности добавления/удаления объектов в массив
 
   return (
-    <main className="container mx-auto max-w-[1110px] flex flex-col items-center pt-20 pb-28">
+    <main className="container mx-auto w-222 flex flex-col items-center pt-20 pb-28">
       <h2 className="mb-7 text-h2-mob leading-h2-web text-black">
         Привет, рады тебя видеть на нашем сервисе, чтобы мы могли подобрать
         для тебя собеседника, выбери нужные разделы ниже, а так же категорию
         напитков
       </h2>
-      <div className="w-[1110px] flex flex-row justify-between mb-15">
+      <div className="w-222 flex flex-row justify-between mb-15">
         <div className="w-82">
           <h3 className="mb-6 font-normal text-[100px] leading-[115px] text-black opacity-50">Тема</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
@@ -36,7 +35,7 @@ function Categories() {
             })}
           </ul>
         </div>
-        <img className="w-50 h-104" src={categoriesImage} alt="categories" />
+        <div className="w-50 h-104 bg-categories_img bg-cover" />
         <div className="w-82">
           <h3 className="mb-6 font-normal text-[100px] leading-[115px] text-black text-center opacity-50">Напитки</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
@@ -56,9 +55,8 @@ function Categories() {
       <Button
         buttonColor="bg-orange"
         buttonTextColor="text-white"
-        buttonHover="hover:bg-opacity-50"
         buttonText="Начать видео - связь"
-        buttonHoverText="hover:text-white"
+        buttonHoverText="hover:text-black"
       />
     </main>
   )

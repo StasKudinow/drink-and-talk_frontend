@@ -11,7 +11,7 @@ function Selector(props) {
       flex
       justify-center
       items-center
-      ${isClicked ? 'bg-green' : 'bg-black'}
+      ${isClicked ? 'shadow-button-shadow bg-black bg-opacity-10' : 'bg-black'}
       rounded-default
       cursor-pointer
       duration-300
