@@ -1,20 +1,30 @@
-import { useLocation, useHistory } from "react-router-dom"
+import { useLocation, useHistory } from 'react-router-dom'
 
-function Button(props) {
-
+function Button({
+  buttonText,
+  buttonColor,
+  buttonTextColor,
+  buttonHoverText,
+  handler,
+  url,
+}) {
   const location = useLocation()
   const history = useHistory()
 
-  function handleClick() {
-    if (location.pathname === '/') {
-      history.push('/categories')
-    }
-  }
+  const handleClick =
+    handler === 'link'
+      ? function handleClick() {
+          if (location.pathname === '/') {
+            history.push(url)
+          }
+        }
+      : handler
+  // тут обработка другух вариантов использования кнопки
 
   const buttonClassName = `
-      ${props.buttonColor}
-      ${props.buttonTextColor}
-      ${props.buttonHoverText}
+      ${buttonColor}
+      ${buttonTextColor}
+      ${buttonHoverText}
       w-70
       h-15
       font-normal
@@ -28,8 +38,11 @@ function Button(props) {
     `
 
   return (
-    <button className={buttonClassName} type="button" onClick={handleClick}>
-      {props.buttonText}
+    <button
+      className={buttonClassName}
+      type="button"
+      onClick={handleClick}>
+      {buttonText}
     </button>
   )
 }
