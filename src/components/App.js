@@ -1,21 +1,32 @@
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from "react-router-dom"
 
-import Header from './Header'
-import Footer from './Footer'
-import Main from './Main'
+import Header from "./Header"
+import Footer from "./Footer"
+import Main from "./Main"
+import Categories from "./Categories"
 
 function App() {
+
   return (
-    <div className="max-w-full min-w-64 min-h-screen bg-white ">
+    <div className="max-w-[100%] min-w-[320px] min-h-[100vh] bg-white font-sans">
+      <Header />
+
       <Switch>
+
         <Route exact path="/">
-          <Header />
           <Main />
-          <Footer />
         </Route>
+
+        <Route path="/categories">
+          <Categories />
+        </Route>
+
       </Switch>
+
+      <Footer />
     </div>
   )
 }
 
 export default App
+

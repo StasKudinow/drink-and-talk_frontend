@@ -1,7 +1,30 @@
-function Button(props) {
+import { useLocation, useHistory } from 'react-router-dom'
+
+function Button({
+  buttonText,
+  buttonColor,
+  buttonTextColor,
+  buttonHoverText,
+  handler,
+  url,
+}) {
+  const location = useLocation()
+  const history = useHistory()
+
+  const handleClick =
+    handler === 'link'
+      ? function handleClick() {
+          if (location.pathname === '/') {
+            history.push(url)
+          }
+        }
+      : handler
+  // тут обработка другух вариантов использования кнопки
+
   const buttonClassName = `
-      ${props.buttonColor}
-      ${props.buttonTextColor}
+      ${buttonColor}
+      ${buttonTextColor}
+      ${buttonHoverText}
       w-70
       h-15
       font-normal
@@ -10,14 +33,16 @@ function Button(props) {
       rounded-default
       duration-300
       z-10
-      hover:bg-opacity-10
-      hover:text-black
       active:shadow-button-shadow
+      hover:bg-opacity-10
     `
 
   return (
-    <button className={buttonClassName} type="button">
-      {props.buttonText}
+    <button
+      className={buttonClassName}
+      type="button"
+      onClick={handleClick}>
+      {buttonText}
     </button>
   )
 }

@@ -6,19 +6,19 @@
 function Footer() {
   return (
     <footer>
-      <div className=" bg-footerColor">
+      <div className="bg-black">
         <div className="w-bg-size mx-auto">
           <div className="w-bg-size-container-footer pt-10 pb-10 flex justify-between">
             <div id="Contacts" className="ml-50">
               <ul>
                 <li className="text-white text-text-xsm-all mb-4">
                   <a href="mailto:holdmydeercompany@gmail.com">
-                    Написать нам
+                    Напишите нам
                   </a>
                 </li>
-                <li className="text-white text-text-xsm-all">
+                {/* <li className="text-white text-text-xsm-all">
                   О нас
-                </li>
+                </li> */}
               </ul>
             </div>
             <div>
@@ -26,12 +26,12 @@ function Footer() {
                 <h3 className="text-h3-web text-white">
                   Drink and Talk
                 </h3>
-                <p className="text-xsm-all text-white">
+                <p className="text-white text-xsm-all">
                   &copy; 2023
                 </p>
               </div>
-              {/* <div className="flex justify-between pt-5">
-								<a href="#">
+              <div className="flex justify-between pt-5">
+                {/* <a href="#">
 									<img
 										src={facebookIcon}
 										alt="facebook-icon-svg"
@@ -48,8 +48,8 @@ function Footer() {
 										src={instagramIcon}
 										alt="instagram-icon-svg"
 									/>
-								</a>
-							</div> */}
+								</a> */}
+              </div>
             </div>
           </div>
         </div>

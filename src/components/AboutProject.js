@@ -1,10 +1,8 @@
-import mainImageSecond from '../images/main-image2.png'
-
 function AboutProject() {
   return (
     <section className="container mx-auto px-34 pb-38 flex flex-raw justify-between relative">
-      <div className="w-[642px] h-[429px] bg-dots_2 bg-cover absolute top-[-30px] right-[51px]" />
-      <div id="About" className="max-w-[634px] pt-3">
+      <div className="w-129 h-86 bg-dots_2 bg-cover absolute -top-6 right-10" />
+      <div id="About" className="w-127 pt-3">
         <h2 className="mb-5 font-normal text-h2-web leading-[46px] text-black">
           О сервисе
         </h2>
@@ -27,7 +25,7 @@ function AboutProject() {
           всего мира.
         </p>
       </div>
-      <img src={mainImageSecond} alt="second-main" />
+      <div className="w-69 h-67 bg-main_img_2 bg-cover absolute top-0 right-34" />
     </section>
   )
 }

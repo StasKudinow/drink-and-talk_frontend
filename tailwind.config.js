@@ -19,22 +19,27 @@ module.exports = {
       backgroundImage: {
         dots_1: 'url(../src/images/dots_1.svg)',
         dots_2: 'url(../src/images/dots_2.svg)',
+        main_img: 'url(../src/images/main_img.svg)',
+        main_img_2: 'url(../src/images/main_img_2.svg)',
+        categories_img: 'url(../src/images/categories_img.svg)',
       },
       colors: {
         black: '#232323',
         orange: '#C97800',
         white: '#F8F8F8',
+        green: '#2DC033',
         'error-red': '#F50B0B',
         'text-black': '#101828',
         footerColor: '#232323',
       },
       spacing: {
-        ...generateSpacings(100),
+        ...generateSpacings(1000),
       },
       opacity: {
         0: '0',
         20: '0.2',
         40: '0.4',
+        50: '0.5',
         60: '0.6',
         80: '0.8',
         100: '1',
