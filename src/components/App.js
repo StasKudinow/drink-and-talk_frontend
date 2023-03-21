@@ -1,9 +1,10 @@
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route } from 'react-router-dom'
 
-import Header from "./Header"
-import Footer from "./Footer"
-import Main from "./Main"
-import Categories from "./Categories"
+import Header from './Header'
+import Footer from './Footer'
+import Main from './Main'
+import Categories from './Categories'
+import Bar from './Bar'
 
 function App() {
 
@@ -19,6 +20,10 @@ function App() {
 
         <Route path="/categories">
           <Categories />
+        </Route>
+
+        <Route path="/bar">
+          <Bar />
         </Route>
 
       </Switch>

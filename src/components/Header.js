@@ -1,30 +1,50 @@
-import { useLocation, useHistory } from "react-router-dom"
+import { useState } from 'react'
+import { useLocation, useHistory } from 'react-router-dom'
 
 function Header() {
+
+  const [isClicked, setIsClicked] = useState(false)
 
   const location = useLocation()
   const history = useHistory()
 
-  function handleClick() {
+  function handleAboutClick() {
     if (location.pathname === '/categories') {
       history.push('/')
     }
   }
 
+  function handleProfileButtonClick() {
+    setIsClicked(!isClicked)
+  }
+
+  const profileButtonClassName = (
+    `
+      w-6
+      h-3
+      bg-profile_button
+      bg-cover
+      duration-300
+      ${isClicked ? 'rotate-180' : ''}
+    `
+  )
+
   return (
-    <header className="pt-10">
-      <nav className="container mx-auto">
-        <div>
-          <ul className="flex">
-            <li className="text-h3-web ml-33">
-              <a href="#About" onClick={handleClick}>О сервисе</a>
-            </li>
-            <li className="text-h3-web ml-15">
-              <a href="#Contacts">Контакты</a>
-            </li>
-          </ul>
-        </div>
+    <header className="container mx-auto w-222 pt-7 flex justify-between">
+      <nav>
+        <ul className="w-66 flex justify-between">
+          <li>
+            <a className="font-normal text-h3-web leading-[34px] text-black" href="#About" onClick={handleAboutClick}>О сервисе</a>
+          </li>
+          <li>
+            <a className="font-normal text-h3-web leading-[34px] text-black" href="#Contacts">Контакты</a>
+          </li>
+        </ul>
       </nav>
+      <div className="w-18 flex flex-row items-center gap-2">
+        <div className="w-10 h-10 bg-profile_icon bg-cover" />
+        <button className={profileButtonClassName} type="button" onClick={handleProfileButtonClick} />
+      </div>
     </header>
   )
 }
