@@ -1,6 +1,8 @@
 function Bar() {
   return (
-    <h1 className="text-h1-web">hello world</h1>
+    <div className="w-full">
+      <section className="w-full grid videoWrapepr grid-cols-3 justify-center"></section>
+    </div>
   )
 }
 
