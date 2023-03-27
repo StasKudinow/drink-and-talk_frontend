@@ -5,7 +5,7 @@
 
 function Footer() {
   return (
-    <footer className="w-[100%] bg-black">
+    <footer className="w-full bg-black">
       <div className="container mx-auto w-222 pt-11 pb-4 flex flex-start">
         <div className="w-124 flex justify-between">
           <div id="Contacts">

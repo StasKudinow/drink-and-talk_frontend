@@ -1,17 +1,14 @@
 import { useState } from 'react'
-import { useLocation, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function Header() {
 
   const [isClicked, setIsClicked] = useState(false)
 
-  const location = useLocation()
   const history = useHistory()
 
   function handleAboutClick() {
-    if (location.pathname === '/categories') {
-      history.push('/')
-    }
+    history.push('/')
   }
 
   function handleProfileButtonClick() {
@@ -34,10 +31,10 @@ function Header() {
       <nav>
         <ul className="w-66 flex justify-between">
           <li>
-            <a className="font-normal text-h3-web leading-[34px] text-black" href="#About" onClick={handleAboutClick}>О сервисе</a>
+            <a className="font-normal text-h3-web leading-8 text-black" href="#About" onClick={handleAboutClick}>О сервисе</a>
           </li>
           <li>
-            <a className="font-normal text-h3-web leading-[34px] text-black" href="#Contacts">Контакты</a>
+            <a className="font-normal text-h3-web leading-8 text-black" href="#Contacts">Контакты</a>
           </li>
         </ul>
       </nav>
