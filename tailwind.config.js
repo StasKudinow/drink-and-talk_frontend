@@ -24,6 +24,7 @@ module.exports = {
         categories_img: 'url(../src/images/categories_img.svg)',
         profile_icon: 'url(../src/images/profile_icon.svg)',
         profile_button: 'url(../src/images/profile_button.svg)',
+        bar_image: 'url(../src/images/bar_image.svg)',
       },
       colors: {
         black: '#232323',
@@ -77,6 +78,9 @@ module.exports = {
       boxShadow: {
         'button-shadow':
           'inset 7px 6px 4px rgba(0, 0, 0, .25)',
+      },
+      transitionProperty: {
+        'top': 'top',
       },
     },
   },

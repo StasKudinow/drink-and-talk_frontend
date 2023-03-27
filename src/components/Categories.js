@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 import { topics, drinks } from "../utils/costants" //изначальные массивы селекторов
 
-import Selector from "./Selector"
-import Button from "./Button"
+import Selector from './Selector'
+import Button from './Button'
 
 function Categories() {
 
@@ -19,7 +19,7 @@ function Categories() {
         для тебя собеседника, выбери нужные разделы ниже, а так же категорию
         напитков
       </h2>
-      <div className="w-222 flex flex-row justify-between mb-15">
+      <section className="w-222 flex flex-row justify-between mb-15">
         <div className="w-82">
           <h3 className="mb-6 font-normal text-[100px] leading-[115px] text-black opacity-50">Тема</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
@@ -51,12 +51,14 @@ function Categories() {
             })}
           </ul>
         </div>
-      </div>
+      </section>
       <Button
         buttonColor="bg-orange"
         buttonTextColor="text-white"
         buttonText="Начать видео - связь"
         buttonHoverText="hover:text-black"
+        handler="link"
+        url="/bar"
       />
     </main>
   )

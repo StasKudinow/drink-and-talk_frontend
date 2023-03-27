@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
+import PopupInHeader from './PopupInHeader'
+
 function Header() {
 
   const [isClicked, setIsClicked] = useState(false)
+  const [isPopupInHeaderOpen, setIsPopupInHeaderOpen] = useState(false)
 
   const history = useHistory()
 
@@ -13,6 +16,7 @@ function Header() {
 
   function handleProfileButtonClick() {
     setIsClicked(!isClicked)
+    setIsPopupInHeaderOpen(!isPopupInHeaderOpen)
   }
 
   const profileButtonClassName = (
@@ -38,9 +42,12 @@ function Header() {
           </li>
         </ul>
       </nav>
-      <div className="w-18 flex flex-row items-center gap-2">
+      <div className="w-18 flex flex-row items-center gap-2 relative">
         <div className="w-10 h-10 bg-profile_icon bg-cover" />
         <button className={profileButtonClassName} type="button" onClick={handleProfileButtonClick} />
+        <PopupInHeader
+          isOpen={isPopupInHeaderOpen}
+        />
       </div>
     </header>
   )

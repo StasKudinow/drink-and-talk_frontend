@@ -1,4 +1,4 @@
-import { useLocation, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function Button({
   buttonText,
@@ -8,15 +8,13 @@ function Button({
   handler,
   url,
 }) {
-  const location = useLocation()
+
   const history = useHistory()
 
   const handleClick =
     handler === 'link'
       ? function handleClick() {
-          if (location.pathname === '/') {
-            history.push(url)
-          }
+          history.push(url)
         }
       : handler
   // тут обработка другух вариантов использования кнопки

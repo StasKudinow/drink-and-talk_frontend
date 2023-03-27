@@ -17,6 +17,6 @@ export default function VideoBlock() {
       autoPlay
       muted
       playsInline
-      className="w-full h-full"></video>
+      className="w-full h-full border"></video>
   )
 }

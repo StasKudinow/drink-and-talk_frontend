@@ -9,7 +9,7 @@ import Bar from './Bar'
 function App() {
 
   return (
-    <div className="max-w-[100%] min-w-[320px] min-h-[100vh] bg-white font-sans">
+    <div className="max-w-full min-w-[320px] min-h-[100vh] bg-white font-sans">
       <Header />
 
       <Switch>
