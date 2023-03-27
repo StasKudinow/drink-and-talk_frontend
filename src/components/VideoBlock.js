@@ -12,5 +12,11 @@ export default function VideoBlock() {
     })
   }, [])
 
-  return <video autoPlay muted playsInline></video>
+  return (
+    <video
+      autoPlay
+      muted
+      playsInline
+      className="w-full h-full"></video>
+  )
 }
