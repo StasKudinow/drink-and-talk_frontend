@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { topics, drinks } from "../utils/costants" //изначальные массивы селекторов
+import { topics, drinks } from '../utils/costants' //изначальные массивы селекторов
 
 import Selector from './Selector'
 import Button from './Button'
@@ -23,7 +23,7 @@ function Categories() {
         <div className="w-82">
           <h3 className="mb-6 font-normal text-[100px] leading-[115px] text-black opacity-50">Тема</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
-            {topics.map((topic) => { // мапим обекты селекторов из изначального массива
+            {topics.map((topic) => { // мапим объекты селекторов из изначального массива
               return <li key={topic.id}>
                 <Selector
                   id={topic.id}
@@ -39,7 +39,7 @@ function Categories() {
         <div className="w-82">
           <h3 className="mb-6 font-normal text-[100px] leading-[115px] text-black text-center opacity-50">Напитки</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
-            {drinks.map((drink) => { // мапим обекты селекторов из изначального массива
+            {drinks.map((drink) => { // мапим объекты селекторов из изначального массива
               return <li key={drink.id}>
                 <Selector
                   id={drink.id}
@@ -53,10 +53,8 @@ function Categories() {
         </div>
       </section>
       <Button
-        buttonColor="bg-orange"
-        buttonTextColor="text-white"
-        buttonText="Начать видео - связь"
-        buttonHoverText="hover:text-black"
+        text="Начать видео - связь"
+        variant="orange-button"
         handler="link"
         url="/bar"
       />

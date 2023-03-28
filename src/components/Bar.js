@@ -13,10 +13,8 @@ function Bar() {
         })}
       </section>
       <Button
-        buttonColor="bg-green"
-        buttonTextColor="text-black"
-        buttonText="Назад"
-        buttonHoverText="hover:text-black"
+        text="Назад"
+        variant="green-button"
         handler="link"
         url="/categories"
       />

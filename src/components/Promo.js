@@ -21,10 +21,8 @@ function Promo() {
           разговоров
         </h3>
         <Button
-          buttonColor="bg-black"
-          buttonTextColor="text-white"
-          buttonText="Начать видео - связь"
-          buttonHoverText="hover:text-black"
+          text="Начать видео - связь"
+          variant="black-button"
           handler="link"
           url="/categories"
         />

@@ -33,7 +33,7 @@ module.exports = {
         green: '#2DC033',
         'error-red': '#F50B0B',
         'text-black': '#101828',
-        footerColor: '#232323',
+        overlay: 'rgba(0, 0, 0, .4)',
       },
       spacing: {
         ...generateSpacings(1000),

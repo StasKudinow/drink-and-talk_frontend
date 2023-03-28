@@ -1,4 +1,5 @@
 function AboutProject() {
+
   return (
     <section className="container mx-auto px-34 pb-38 flex flex-raw justify-between relative">
       <div className="w-129 h-86 bg-dots_2 bg-cover absolute -top-6 right-10" />
@@ -6,7 +7,6 @@ function AboutProject() {
         <h2 className="mb-5 font-normal text-h2-web leading-[46px] text-black">
           О сервисе
         </h2>
-
         <p className="font-normal text-text-sm-web leading-[146.34%]">
           Современный образ жизни уже давно не позволяет нам
           легко и быстро находить интересных собутыльников,

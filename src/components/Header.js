@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import PopupInHeader from './PopupInHeader'
+import Button from './Button'
+import DropDownMenu from './DropDownMenu'
 
 function Header() {
 
-  const [isClicked, setIsClicked] = useState(false)
-  const [isPopupInHeaderOpen, setIsPopupInHeaderOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const history = useHistory()
 
@@ -15,20 +15,12 @@ function Header() {
   }
 
   function handleProfileButtonClick() {
-    setIsClicked(!isClicked)
-    setIsPopupInHeaderOpen(!isPopupInHeaderOpen)
+    setIsMenuOpen(!isMenuOpen)
   }
 
-  const profileButtonClassName = (
-    `
-      w-6
-      h-3
-      bg-profile_button
-      bg-cover
-      duration-300
-      ${isClicked ? 'rotate-180' : ''}
-    `
-  )
+  function handleCloseMenu() {
+    setIsMenuOpen(false)
+  }
 
   return (
     <header className="container mx-auto w-222 pt-7 flex justify-between">
@@ -44,9 +36,15 @@ function Header() {
       </nav>
       <div className="w-18 flex flex-row items-center gap-2 relative">
         <div className="w-10 h-10 bg-profile_icon bg-cover" />
-        <button className={profileButtonClassName} type="button" onClick={handleProfileButtonClick} />
-        <PopupInHeader
-          isOpen={isPopupInHeaderOpen}
+        <Button
+          variant="drop-down-button"
+          handler="drop-down"
+          onOpenMenu={handleProfileButtonClick}
+          isMenuOpen={isMenuOpen}
+        />
+        <DropDownMenu
+          isOpen={isMenuOpen}
+          onClose={handleCloseMenu}
         />
       </div>
     </header>

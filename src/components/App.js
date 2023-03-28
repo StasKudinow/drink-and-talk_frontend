@@ -5,6 +5,7 @@ import Footer from './Footer'
 import Main from './Main'
 import Categories from './Categories'
 import Bar from './Bar'
+import Popup from './Popup'
 
 function App() {
 
@@ -29,6 +30,8 @@ function App() {
       </Switch>
 
       <Footer />
+
+      {/* <Popup /> */}
     </div>
   )
 }

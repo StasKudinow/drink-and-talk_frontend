@@ -4,19 +4,18 @@
 // Убрано пока нету соцсетей.
 
 function Footer() {
+
   return (
     <footer className="w-full bg-black">
       <div className="container mx-auto w-222 pt-11 pb-4 flex flex-start">
         <div className="w-124 flex justify-between">
-          <div id="Contacts">
-            <ul>
-              <li className="font-normal text-text-xsm-all leading-[21px] text-white">
-                <a href="mailto:holdmydeercompany@gmail.com">
-                  Напишите нам
-                </a>
-              </li>
-            </ul>
-          </div>
+          <ul id="Contacts">
+            <li className="font-normal text-text-xsm-all leading-[21px] text-white">
+              <a href="mailto:holdmydeercompany@gmail.com">
+                Напишите нам
+              </a>
+            </li>
+          </ul>
           <div>
             <h3 className="font-normal text-h3-web leading-[34px] text-center text-white mb-2">
               Drink and Talk
