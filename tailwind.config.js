@@ -67,6 +67,8 @@ module.exports = {
         'h3-mob': '25px',
         'text-sm-web': '20px',
         'text-xsm-all': '18px',
+        '110': '110px',
+        '120': '120px',
       },
       lineHeight: {
         'h1-web': '60px',
@@ -74,6 +76,10 @@ module.exports = {
         'h3-web': '44px',
         'text-sm-web': '44px',
         'all-mob': '32px',
+        '115': '115px',
+        '126': '126px',
+        '138': '138px',
+        '172': '172px',
       },
       boxShadow: {
         'button-shadow':

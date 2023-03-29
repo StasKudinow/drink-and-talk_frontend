@@ -15,6 +15,7 @@ function Selector(props) {
       rounded-default
       cursor-pointer
       duration-300
+      hover:bg-opacity-10
     `
   )
 
@@ -22,7 +23,8 @@ function Selector(props) {
     `
       font-normal
       text-h3-web
-      leading-[34px]
+      leading-8
+      hover:text-black
       ${isClicked ? 'text-black' : 'text-white'}
     `
   )

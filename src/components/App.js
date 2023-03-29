@@ -5,12 +5,12 @@ import Footer from './Footer'
 import Main from './Main'
 import Categories from './Categories'
 import Bar from './Bar'
-import Popup from './Popup'
+// import Popup from './Popup'
 
 function App() {
 
   return (
-    <div className="max-w-full min-w-[320px] min-h-[100vh] bg-white font-sans">
+    <div className="max-w-full min-w-64 min-h-screen bg-white font-sans">
       <Header />
 
       <Switch>

@@ -7,6 +7,7 @@ function Button({
   url,
   onOpenMenu,
   isMenuOpen,
+  onRefreshPage
 }) {
 
   const history = useHistory()
@@ -28,6 +29,7 @@ function Button({
   function handleClick() {
     if (handler === 'link') {
       openLink()
+      onRefreshPage()
     } else if (handler === 'drop-down') {
       onOpenMenu()
     }

@@ -21,7 +21,7 @@ function Categories() {
       </h2>
       <section className="w-222 flex flex-row justify-between mb-15">
         <div className="w-82">
-          <h3 className="mb-6 font-normal text-[100px] leading-[115px] text-black opacity-50">Тема</h3>
+          <h3 className="mb-6 font-normal text-8xl leading-115 text-black opacity-50">Тема</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
             {topics.map((topic) => { // мапим объекты селекторов из изначального массива
               return <li key={topic.id}>
@@ -37,7 +37,7 @@ function Categories() {
         </div>
         <div className="w-50 h-104 bg-categories_img bg-cover" />
         <div className="w-82">
-          <h3 className="mb-6 font-normal text-[100px] leading-[115px] text-black text-center opacity-50">Напитки</h3>
+          <h3 className="mb-6 font-normal text-8xl leading-115 text-black text-center opacity-50">Напитки</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
             {drinks.map((drink) => { // мапим объекты селекторов из изначального массива
               return <li key={drink.id}>
