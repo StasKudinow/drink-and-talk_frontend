@@ -3,54 +3,48 @@
 // import instagramIcon from '../images/icons/instagram.svg'
 // Убрано пока нету соцсетей.
 
+import { useHistory } from 'react-router-dom'
+
 function Footer() {
+
+  const history = useHistory()
+
+  function handleAboutClick() {
+    history.push('/')
+  }
+
   return (
-    <footer>
-      <div className="bg-black">
-        <div className="w-bg-size mx-auto">
-          <div className="w-bg-size-container-footer pt-10 pb-10 flex justify-between">
-            <div id="Contacts" className="ml-50">
-              <ul>
-                <li className="text-white text-text-xsm-all mb-4">
-                  <a href="mailto:holdmydeercompany@gmail.com">
-                    Напишите нам
-                  </a>
-                </li>
-                {/* <li className="text-white text-text-xsm-all">
-                  О нас
-                </li> */}
-              </ul>
-            </div>
-            <div>
-              <div>
-                <h3 className="text-h3-web text-white">
-                  Drink and Talk
-                </h3>
-                <p className="text-white text-xsm-all">
-                  &copy; 2023
-                </p>
-              </div>
-              <div className="flex justify-between pt-5">
-                {/* <a href="#">
-									<img
-										src={facebookIcon}
-										alt="facebook-icon-svg"
-									/>
-								</a>
-								<a href="#">
-									<img
-										src={telegramIcon}
-										alt="telegram-icon-svg"
-									/>
-								</a>
-								<a href="#">
-									<img
-										src={instagramIcon}
-										alt="instagram-icon-svg"
-									/>
-								</a> */}
-              </div>
-            </div>
+    <footer className="w-full bg-black">
+      <div className="container mx-auto w-222 pt-11 pb-4 flex flex-start">
+        <div className="w-128 flex justify-between">
+          <ul id="Contacts">
+            {/* <li>
+              <a
+                href="#"
+                className="mb-3 font-normal text-text-xsm-all leading-5 text-white"
+              >Контакты</a>
+            </li> */}
+            <li>
+              <a
+                href="#About"
+                className="font-normal text-text-xsm-all leading-5 text-white"
+                onClick={handleAboutClick}
+              >О сервисе</a>
+            </li>
+          </ul>
+          <div>
+            <h3 className="font-normal text-h3-web leading-8 text-center text-white mb-2">
+              Drink and Talk
+            </h3>
+            <a
+              className="font-normal text-xsm-all leading-5 text-center text-white"
+              href="mailto:holdmydeercompany@gmail.com"
+            >
+              holdmydeercompany@gmail.com
+            </a>
+            <p className="mt-6 font-normal text-xsm-all leading-8 text-center text-white">
+              &copy; 2023
+            </p>
           </div>
         </div>
       </div>

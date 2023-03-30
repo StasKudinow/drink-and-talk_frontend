@@ -1,11 +1,12 @@
 class VideoController {
   constructor(
     private width: number,
-    private height: number
+    private height: number,
+    private stream: any
   ) {}
 
   public getVideoStream(): Promise<MediaStream> {
-    return navigator.mediaDevices
+    this.stream = navigator.mediaDevices
       .getUserMedia({
         audio: true,
         video: { width: this.width, height: this.height },
@@ -19,6 +20,12 @@ class VideoController {
         }
         throw error
       })
+
+    return this.stream
+  }
+
+  public closeVideoStream(): void {
+    this.stream.getTracks().forEach((track) => track.stop())
   }
 }
 

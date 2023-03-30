@@ -22,6 +22,9 @@ module.exports = {
         main_img: 'url(../src/images/main_img.svg)',
         main_img_2: 'url(../src/images/main_img_2.svg)',
         categories_img: 'url(../src/images/categories_img.svg)',
+        profile_icon: 'url(../src/images/profile_icon.svg)',
+        profile_button: 'url(../src/images/profile_button.svg)',
+        bar_image: 'url(../src/images/bar_image.svg)',
       },
       colors: {
         black: '#232323',
@@ -30,7 +33,7 @@ module.exports = {
         green: '#2DC033',
         'error-red': '#F50B0B',
         'text-black': '#101828',
-        footerColor: '#232323',
+        overlay: 'rgba(0, 0, 0, .4)',
       },
       spacing: {
         ...generateSpacings(1000),
@@ -64,6 +67,8 @@ module.exports = {
         'h3-mob': '25px',
         'text-sm-web': '20px',
         'text-xsm-all': '18px',
+        '110': '110px',
+        '120': '120px',
       },
       lineHeight: {
         'h1-web': '60px',
@@ -71,14 +76,17 @@ module.exports = {
         'h3-web': '44px',
         'text-sm-web': '44px',
         'all-mob': '32px',
+        '115': '115px',
+        '126': '126px',
+        '138': '138px',
+        '172': '172px',
       },
       boxShadow: {
         'button-shadow':
           'inset 7px 6px 4px rgba(0, 0, 0, .25)',
       },
-      width: {
-        'bg-size-container-footer': '800px',
-				'bg-size': '1440px'
+      transitionProperty: {
+        'top': 'top',
       },
     },
   },
