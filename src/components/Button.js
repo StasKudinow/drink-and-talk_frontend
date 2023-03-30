@@ -28,9 +28,10 @@ function Button({
   function handleClick() {
     if (handler === 'link') {
       openLink()
-      onRefreshPage()
     } else if (handler === 'drop-down') {
       onOpenMenu()
+    } else if (handler === 'stop-stream') {
+      onRefreshPage()
     }
   }
   // тут обработка другух вариантов использования кнопки

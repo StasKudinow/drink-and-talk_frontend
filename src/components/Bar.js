@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom'
+
 import VideoBlock from './VideoBlock'
 import Button from './Button'
 
@@ -5,9 +7,12 @@ import { streams } from '../utils/costants'
 
 function Bar() {
 
-  function refreshPage() { // доделать
+  const history = useHistory()
+
+  function refreshPage() {
     let result = window.confirm('Выйти из бара?')
     if (result) {
+      history.push('/categories')
       window.location.reload()
     }
   }
@@ -22,8 +27,7 @@ function Bar() {
       <Button
         text="Назад"
         variant="green-button"
-        handler="link"
-        url="/categories"
+        handler="stop-stream"
         onRefreshPage={refreshPage}
       />
       <div className="w-120 h-45 mt-7 bg-bar_image bg-cover" />
