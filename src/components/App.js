@@ -5,7 +5,7 @@ import Footer from './Footer'
 import Main from './Main'
 import Categories from './Categories'
 import Bar from './Bar'
-// import Popup from './Popup'
+import Register from './Register'
 
 function App() {
 
@@ -31,7 +31,7 @@ function App() {
 
       <Footer />
 
-      {/* <Popup /> */}
+      <Register />
     </div>
   )
 }

@@ -99,6 +99,34 @@ function Button({
           ${isMenuOpen ? 'rotate-180' : ''}
         `
       break
+    case 'close-popup':
+      buttonClassName = `
+          w-3
+          h-3
+          bg-popup_close_btn
+          bg-cover
+          absolute
+          top-6
+          right-6
+        `
+      break
+    case 'submit-popup':
+      buttonClassName = `
+          w-71
+          h-10
+          bg-orange
+          font-normal
+          text-22
+          leading-6
+          text-black
+          rounded-default
+          duration-300
+          z-10
+          active:shadow-button-shadow
+          hover:bg-opacity-10
+          hover:text-white
+        `
+      break
     default:
       throw new Error('Button variant not found')
   }
