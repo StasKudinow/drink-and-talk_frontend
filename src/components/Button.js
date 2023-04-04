@@ -8,6 +8,8 @@ function Button({
   onOpenMenu,
   isMenuOpen,
   onRefreshPage,
+  onPopupOpen,
+  onClose,
 }) {
   const history = useHistory()
 
@@ -32,6 +34,10 @@ function Button({
       onOpenMenu()
     } else if (handler === 'stop-stream') {
       onRefreshPage()
+    } else if (handler === 'open-popup') {
+      onPopupOpen()
+    } else if (handler === 'close-popup') {
+      onClose()
     }
   }
   // тут обработка другух вариантов использования кнопки
@@ -125,6 +131,15 @@ function Button({
           active:shadow-button-shadow
           hover:bg-opacity-10
           hover:text-white
+        `
+      break
+    case 'login':
+      buttonClassName = `
+          bg-white
+          font-normal
+          text-h3-web
+          leading-8
+          text-black
         `
       break
     default:

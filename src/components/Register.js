@@ -43,15 +43,15 @@ function Register() {
         name="password"
         placeholder="Повторите пароль"
       />
-      <label className="mb-4 flex gap-2">
+      <label className="w-31 mb-4 flex gap-2 cursor-pointer">
         <input
-          className="w-4 h-4 rounded-default"
+          className="w-4 h-4 rounded-default cursor-pointer"
           type="checkbox"
         />
         <p className="font-normal text-text-xsm-all leading-5 text-gray">Мне есть 18 лет</p>
       </label>
       <p className="mb-4 font-normal text-text-xsm-all leading-5 text-white">
-        Или <a className="hover:text-gray duration-300" href="#login">войдите</a> в аккаунт
+        Или <a className="text-orange hover:text-gray duration-300" href="#login">войдите</a> в аккаунт
       </p>
     </Popup>
   )

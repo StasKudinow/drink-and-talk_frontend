@@ -4,11 +4,31 @@ import { useHistory } from 'react-router-dom'
 import Button from './Button'
 import DropDownMenu from './DropDownMenu'
 
-function Header() {
+function Header({ loggedIn, onPopupOpen }) {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const history = useHistory()
+
+  let profileButton
+
+  if (loggedIn) {
+    profileButton =
+      <Button
+        variant="drop-down-button"
+        handler="drop-down"
+        onOpenMenu={handleProfileButtonClick}
+        isMenuOpen={isMenuOpen}
+      />
+  } else {
+    profileButton =
+      <Button
+        variant="login"
+        handler="open-popup"
+        text="Войти"
+        onPopupOpen={onPopupOpen}
+      />
+  }
 
   function handleAboutClick() {
     history.push('/')
@@ -34,14 +54,9 @@ function Header() {
           </li>
         </ul>
       </nav>
-      <div className="w-18 flex flex-row items-center gap-2 relative">
+      <div className="flex flex-row items-center gap-2 relative">
         <div className="w-10 h-10 bg-profile_icon bg-cover" />
-        <Button
-          variant="drop-down-button"
-          handler="drop-down"
-          onOpenMenu={handleProfileButtonClick}
-          isMenuOpen={isMenuOpen}
-        />
+        {profileButton}
         <DropDownMenu
           isOpen={isMenuOpen}
           onClose={handleCloseMenu}
