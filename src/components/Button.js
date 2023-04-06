@@ -5,33 +5,45 @@ function Button({
   text,
   handler,
   url,
+  type,
   onOpenMenu,
   isMenuOpen,
   onRefreshPage,
+  onPopupOpen,
+  onClose,
+  onSubmit,
+  onDisabled,
+  disabled,
 }) {
-  const history = useHistory()
 
-  // const handleClick =
-  //   handler === 'link'
-  //     ? function openLink() {
-  //         history.push(url)
-  //       }
-  //   : handler === 'drop-down'
-  //       function openMenu() {
-  //         onOpenMenu()
-  //       }
+  const history = useHistory()
 
   function openLink() {
     history.push(url)
   }
 
   function handleClick() {
-    if (handler === 'link') {
-      openLink()
-    } else if (handler === 'drop-down') {
-      onOpenMenu()
-    } else if (handler === 'stop-stream') {
-      onRefreshPage()
+    switch (handler) {
+      case 'link' :
+        openLink()
+        break
+      case 'drop-down' :
+        onOpenMenu()
+        break
+      case 'stop-stream' :
+        onRefreshPage()
+        break
+      case 'open-popup' :
+        onPopupOpen()
+        break
+      case 'close-popup' :
+        onClose()
+        break
+      case 'submit' :
+        onSubmit()
+        break
+      default:
+        throw new Error('Button handler not found')
     }
   }
   // тут обработка другух вариантов использования кнопки
@@ -99,6 +111,41 @@ function Button({
           ${isMenuOpen ? 'rotate-180' : ''}
         `
       break
+    case 'close-popup':
+      buttonClassName = `
+          w-3
+          h-3
+          bg-popup_close_btn
+          bg-cover
+          absolute
+          top-6
+          right-6
+        `
+      break
+    case 'auth':
+      buttonClassName = `
+          w-71
+          h-10
+          bg-orange
+          font-normal
+          text-22
+          leading-6
+          text-black
+          rounded-default
+          duration-300
+          z-10
+          ${disabled ? 'opacity-50 cursor-auto' : 'active:shadow-button-shadow hover:bg-opacity-10 hover:text-white'}
+        `
+      break
+    case 'login':
+      buttonClassName = `
+          bg-white
+          font-normal
+          text-h3-web
+          leading-8
+          text-black
+        `
+      break
     default:
       throw new Error('Button variant not found')
   }
@@ -107,7 +154,9 @@ function Button({
     <button
       className={buttonClassName}
       onClick={handleClick}
-      type="button">
+      type={type}
+      disabled={onDisabled}
+    >
       {text}
     </button>
   )
