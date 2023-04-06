@@ -79,8 +79,6 @@ module.exports = {
         'h3-web': '44px',
         'text-sm-web': '44px',
         'all-mob': '32px',
-        '25': '25px',
-        '46': '46px',
         '115': '115px',
         '126': '126px',
         '138': '138px',

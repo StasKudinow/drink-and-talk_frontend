@@ -5,39 +5,45 @@ function Button({
   text,
   handler,
   url,
+  type,
   onOpenMenu,
   isMenuOpen,
   onRefreshPage,
   onPopupOpen,
   onClose,
+  onSubmit,
+  onDisabled,
+  disabled,
 }) {
-  const history = useHistory()
 
-  // const handleClick =
-  //   handler === 'link'
-  //     ? function openLink() {
-  //         history.push(url)
-  //       }
-  //   : handler === 'drop-down'
-  //       function openMenu() {
-  //         onOpenMenu()
-  //       }
+  const history = useHistory()
 
   function openLink() {
     history.push(url)
   }
 
   function handleClick() {
-    if (handler === 'link') {
-      openLink()
-    } else if (handler === 'drop-down') {
-      onOpenMenu()
-    } else if (handler === 'stop-stream') {
-      onRefreshPage()
-    } else if (handler === 'open-popup') {
-      onPopupOpen()
-    } else if (handler === 'close-popup') {
-      onClose()
+    switch (handler) {
+      case 'link' :
+        openLink()
+        break
+      case 'drop-down' :
+        onOpenMenu()
+        break
+      case 'stop-stream' :
+        onRefreshPage()
+        break
+      case 'open-popup' :
+        onPopupOpen()
+        break
+      case 'close-popup' :
+        onClose()
+        break
+      case 'submit' :
+        onSubmit()
+        break
+      default:
+        throw new Error('Button handler not found')
     }
   }
   // тут обработка другух вариантов использования кнопки
@@ -116,7 +122,7 @@ function Button({
           right-6
         `
       break
-    case 'submit-popup':
+    case 'auth':
       buttonClassName = `
           w-71
           h-10
@@ -128,9 +134,7 @@ function Button({
           rounded-default
           duration-300
           z-10
-          active:shadow-button-shadow
-          hover:bg-opacity-10
-          hover:text-white
+          ${disabled ? 'opacity-50 cursor-auto' : 'active:shadow-button-shadow hover:bg-opacity-10 hover:text-white'}
         `
       break
     case 'login':
@@ -150,7 +154,9 @@ function Button({
     <button
       className={buttonClassName}
       onClick={handleClick}
-      type="button">
+      type={type}
+      disabled={onDisabled}
+    >
       {text}
     </button>
   )

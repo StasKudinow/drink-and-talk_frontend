@@ -17,6 +17,7 @@ function Header({ loggedIn, onPopupOpen }) {
       <Button
         variant="drop-down-button"
         handler="drop-down"
+        type="button"
         onOpenMenu={handleProfileButtonClick}
         isMenuOpen={isMenuOpen}
       />
@@ -25,6 +26,7 @@ function Header({ loggedIn, onPopupOpen }) {
       <Button
         variant="login"
         handler="open-popup"
+        type="button"
         text="Войти"
         onPopupOpen={onPopupOpen}
       />

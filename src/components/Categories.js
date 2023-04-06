@@ -56,6 +56,7 @@ function Categories() {
         text="Начать видео - связь"
         variant="orange-button"
         handler="link"
+        type="button"
         url="/bar"
       />
     </main>

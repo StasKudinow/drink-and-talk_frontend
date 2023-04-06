@@ -14,13 +14,19 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false)
+  const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false)
 
   function closeAllPopups() {
     setIsLoginPopupOpen(false)
+    setIsRegisterPopupOpen(false)
   }
 
   function handleLoginPopupOpen() {
     setIsLoginPopupOpen(true)
+  }
+
+  function handleRegisterPopupOpen() {
+    setIsRegisterPopupOpen(true)
   }
 
   return (
@@ -33,7 +39,10 @@ function App() {
       <Switch>
 
         <Route exact path="/">
-          <Main />
+          <Main
+            onPopupOpen={handleRegisterPopupOpen}
+            loggedIn={loggedIn}
+          />
         </Route>
 
         <Route path="/categories">
@@ -48,10 +57,14 @@ function App() {
 
       <Footer />
 
-      <Register />
+      <Register
+        isOpen={isRegisterPopupOpen}
+        onClose={closeAllPopups}
+        isLoginClick={handleLoginPopupOpen}
+      />
 
       <Login
-        isLoginPopupOpen={isLoginPopupOpen}
+        isOpen={isLoginPopupOpen}
         onClose={closeAllPopups}
       />
     </div>

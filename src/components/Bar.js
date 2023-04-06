@@ -28,6 +28,7 @@ function Bar() {
         text="Назад"
         variant="green-button"
         handler="stop-stream"
+        type="button"
         onRefreshPage={refreshPage}
       />
       <div className="w-120 h-45 mt-7 bg-bar_image bg-cover" />

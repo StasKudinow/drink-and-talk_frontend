@@ -1,11 +1,14 @@
 import Promo from './Promo'
 import AboutProject from './AboutProject'
 
-function Main() {
+function Main({ loggedIn, onPopupOpen}) {
 
 	return (
 		<main>
-			<Promo />
+			<Promo
+				onPopupOpen={onPopupOpen}
+				loggedIn={loggedIn}
+			/>
 			<AboutProject />
 		</main>
 	)

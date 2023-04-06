@@ -1,6 +1,29 @@
 import Button from './Button'
 
-function Promo() {
+function Promo({ loggedIn, onPopupOpen}) {
+
+  let promoButton
+
+  if (loggedIn) {
+    promoButton =
+      <Button
+        text="Начать видео - связь"
+        variant="black-button"
+        handler="link"
+        type="button"
+        url="/categories"
+      />
+  } else {
+    promoButton =
+      <Button
+        text="Начать видео - связь"
+        variant="black-button"
+        handler="open-popup"
+        type="button"
+        onPopupOpen={onPopupOpen}
+      />
+  }
+
   return (
     <section className="container mx-auto px-10 pt-10 flex flex-raw justify-between relative">
       <div className="w-185 h-119 bg-dots_1 bg-cover absolute top-13 left-9" />
@@ -20,12 +43,7 @@ function Promo() {
           Сервис для общения по видео-связи и душевных
           разговоров
         </h3>
-        <Button
-          text="Начать видео - связь"
-          variant="black-button"
-          handler="link"
-          url="/categories"
-        />
+        {promoButton}
       </div>
       <div className="w-108 h-128 mb-32 bg-main_img bg-cover absolute top-6 right-14" />
     </section>
