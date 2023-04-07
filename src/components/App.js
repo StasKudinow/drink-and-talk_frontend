@@ -8,6 +8,7 @@ import Categories from './Categories'
 import Bar from './Bar'
 import Register from './Register'
 import Login from './Login'
+import ProtectedRoute from './ProtectedRoute'
 
 
 function App() {
@@ -45,13 +46,17 @@ function App() {
           />
         </Route>
 
-        <Route path="/categories">
-          <Categories />
-        </Route>
+        <ProtectedRoute
+          path="/categories"
+          component={Categories}
+          loggedIn={loggedIn}
+        />
 
-        <Route path="/bar">
-          <Bar />
-        </Route>
+        <ProtectedRoute
+          path="/bar"
+          component={Bar}
+          loggedIn={loggedIn}
+        />
 
       </Switch>
 
