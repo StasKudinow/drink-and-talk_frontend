@@ -122,7 +122,7 @@ function Button({
           right-6
         `
       break
-    case 'auth':
+    case 'submit':
       buttonClassName = `
           w-71
           h-10

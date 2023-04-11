@@ -26,8 +26,8 @@ function Popup(props) {
           type="button"
           onClose={props.onClose}
         />
-        <h2 className="mb-1 font-normal text-h2-web leading-h3-web text-white">{props.title}</h2>
-        <p className="w-71 mb-4 font-light text-text-xsm-all leading-5 text-white">{props.description}</p>
+        <h2 className="font-normal text-h2-web leading-h3-web text-white">{props.title}</h2>
+        <p className="mb-4 w-71 font-light text-text-xsm-all leading-5 text-white">{props.description}</p>
           {props.children}
       </div>
     </div>

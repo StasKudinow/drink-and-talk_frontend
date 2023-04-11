@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function DropDownMenu({ isOpen, onClose }) {
+function DropDownMenu({ isOpen, onClose, onLogout }) {
 
   const popupClassName = (
     `
@@ -19,13 +19,18 @@ function DropDownMenu({ isOpen, onClose }) {
     `
   ) // Анимации не работают с display: none. Подумать
 
+  function handleLogoutClick() {
+    onLogout()
+    onClose()
+  }
+
   return (
     <ul className={popupClassName}>
       <li className="mb-4 font-normal text-text-sm-web text-white leading-5">
         <Link to="/profile" onClick={onClose}>Редактировать профиль</Link>
       </li>
       <li className="font-normal text-text-sm-web text-white leading-5">
-        <Link to="/" onClick={onClose}>Выход</Link>
+        <Link to="/" onClick={handleLogoutClick}>Выход</Link>
       </li>
     </ul>
   )

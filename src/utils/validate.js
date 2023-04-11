@@ -1,8 +1,6 @@
 export function validateLogin(value) {
   if (!value) {
     return 'Заполните это поле!'
-  } else if (!/^[а-яА-Яa-zA-Z\-\s]{2,30}$/umi) {
-    return 'Имя должно содержать только латиницу, кириллицу, пробел или дефис!';
   }
 }
 
@@ -21,6 +19,12 @@ export function validatePassword(value) {
 }
 
 export function validateConfirmPassword(value) {
+  if (!value) {
+    return 'Заполните это поле!'
+  }
+}
+
+export function validateOldPassword(value) {
   if (!value) {
     return 'Заполните это поле!'
   }

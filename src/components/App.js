@@ -6,9 +6,11 @@ import Footer from './Footer'
 import Main from './Main'
 import Categories from './Categories'
 import Bar from './Bar'
+import ProtectedRoute from './ProtectedRoute'
 import Register from './Register'
 import Login from './Login'
-import ProtectedRoute from './ProtectedRoute'
+import ChangePassword from './ChangePassword'
+
 
 
 function App() {
@@ -16,10 +18,12 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false)
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false)
+  const [isChangePasswordPopupOpen, setIsChangePasswordPopupOpen] = useState(false)
 
   function closeAllPopups() {
     setIsLoginPopupOpen(false)
     setIsRegisterPopupOpen(false)
+    setIsChangePasswordPopupOpen(false)
   }
 
   function handleLoginPopupOpen() {
@@ -30,11 +34,20 @@ function App() {
     setIsRegisterPopupOpen(true)
   }
 
+  function handleChangePasswordPopupOpen() {
+    setIsChangePasswordPopupOpen(true)
+  }
+
+  function onLogout() {
+    setLoggedIn(false)
+  }
+
   return (
     <div className="max-w-full min-w-64 min-h-screen bg-white font-sans">
       <Header
         onPopupOpen={handleLoginPopupOpen}
         loggedIn={loggedIn}
+        onLogout={onLogout}
       />
 
       <Switch>
@@ -70,6 +83,11 @@ function App() {
 
       <Login
         isOpen={isLoginPopupOpen}
+        onClose={closeAllPopups}
+      />
+
+      <ChangePassword
+        isOpen={isChangePasswordPopupOpen}
         onClose={closeAllPopups}
       />
     </div>

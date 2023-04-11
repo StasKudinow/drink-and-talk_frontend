@@ -49,8 +49,9 @@ function Login({ isOpen, onClose }) {
           email: '',
           password: '',
         }}
-        onSubmit={values => {
+        onSubmit={(values, {resetForm}) => {
           console.log(values)
+          resetForm()
           onClose()
         }}
         validateOnMount
@@ -82,7 +83,7 @@ function Login({ isOpen, onClose }) {
             </p>
             <Button
               text="Авторизация"
-              variant="auth"
+              variant="submit"
               handler="submit"
               type="submit"
               onSubmit={handleSubmit}

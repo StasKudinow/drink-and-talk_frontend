@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import Button from './Button'
 import DropDownMenu from './DropDownMenu'
 
-function Header({ loggedIn, onPopupOpen }) {
+function Header({ loggedIn, onPopupOpen, onLogout }) {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -62,6 +62,7 @@ function Header({ loggedIn, onPopupOpen }) {
         <DropDownMenu
           isOpen={isMenuOpen}
           onClose={handleCloseMenu}
+          onLogout={onLogout}
         />
       </div>
     </header>
