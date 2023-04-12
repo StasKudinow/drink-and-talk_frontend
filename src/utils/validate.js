@@ -4,6 +4,12 @@ export function validateLogin(value) {
   }
 }
 
+export function validateBarName(value) {
+  if (!value) {
+    return 'Заполните это поле!'
+  }
+}
+
 export function validateEmail(value) {
   if (!value) {
     return 'Заполните это поле!'
@@ -15,17 +21,23 @@ export function validateEmail(value) {
 export function validatePassword(value) {
   if (!value) {
     return 'Заполните это поле!'
+  } else if (!/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g.test(value)) {
+    return 'Пароль должен состоять минимум из 6 символов, содержать минимум 1 цифру, 1 латинскую букву в нижнем регистре, 1 латинскую букву в верхнем регистре'
   }
 }
 
 export function validateConfirmPassword(value) {
   if (!value) {
     return 'Заполните это поле!'
+  } else if (!/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g.test(value)) {
+    return 'Пароль должен состоять минимум из 6 символов, содержать минимум 1 цифру, 1 латинскую букву в нижнем регистре, 1 латинскую букву в верхнем регистре'
   }
 }
 
 export function validateOldPassword(value) {
   if (!value) {
     return 'Заполните это поле!'
+  } else if (!/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g.test(value)) {
+    return 'Пароль должен состоять минимум из 6 символов, содержать минимум 1 цифру, 1 латинскую букву в нижнем регистре, 1 латинскую букву в верхнем регистре'
   }
 }

@@ -24,22 +24,22 @@ function Button({
 
   function handleClick() {
     switch (handler) {
-      case 'link' :
+      case 'link':
         openLink()
         break
-      case 'drop-down' :
+      case 'drop-down':
         onOpenMenu()
         break
-      case 'stop-stream' :
+      case 'stop-stream':
         onRefreshPage()
         break
-      case 'open-popup' :
+      case 'open-popup':
         onPopupOpen()
         break
-      case 'close-popup' :
+      case 'close-popup':
         onClose()
         break
-      case 'submit' :
+      case 'submit':
         onSubmit()
         break
       default:

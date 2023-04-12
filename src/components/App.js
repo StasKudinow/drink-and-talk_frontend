@@ -10,6 +10,7 @@ import ProtectedRoute from './ProtectedRoute'
 import Register from './Register'
 import Login from './Login'
 import ChangePassword from './ChangePassword'
+import CreateBar from './CreateBar'
 
 
 
@@ -19,11 +20,13 @@ function App() {
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false)
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false)
   const [isChangePasswordPopupOpen, setIsChangePasswordPopupOpen] = useState(false)
+  const [isCreateBarPopupOpen, setIsCreateBarPopupOpen] = useState(false)
 
   function closeAllPopups() {
     setIsLoginPopupOpen(false)
     setIsRegisterPopupOpen(false)
     setIsChangePasswordPopupOpen(false)
+    setIsCreateBarPopupOpen(false)
   }
 
   function handleLoginPopupOpen() {
@@ -36,6 +39,10 @@ function App() {
 
   function handleChangePasswordPopupOpen() {
     setIsChangePasswordPopupOpen(true)
+  }
+
+  function handleCreateBarPopupOpen() {
+    setIsCreateBarPopupOpen(true)
   }
 
   function onLogout() {
@@ -88,6 +95,11 @@ function App() {
 
       <ChangePassword
         isOpen={isChangePasswordPopupOpen}
+        onClose={closeAllPopups}
+      />
+
+      <CreateBar
+        isOpen={isCreateBarPopupOpen}
         onClose={closeAllPopups}
       />
     </div>

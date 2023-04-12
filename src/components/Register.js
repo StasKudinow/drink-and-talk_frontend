@@ -38,6 +38,11 @@ function Register({ isOpen, onClose, isLoginClick }) {
       rounded-default
     `
 
+  function handleRegisterSubmit(values) {
+    //TODO: submit register
+  }
+
+
   function handleLoginClick() {
     onClose()
     isLoginClick()
@@ -45,6 +50,7 @@ function Register({ isOpen, onClose, isLoginClick }) {
 
   return (
     <Popup
+      variant="form"
       title="Регистрация"
       description="Пожалуйста введите ваши данные для регистрации на нашем сайте"
       isOpen={isOpen}
@@ -59,16 +65,14 @@ function Register({ isOpen, onClose, isLoginClick }) {
         }}
         onSubmit={(values, {resetForm}) => {
           if (values.password === values.confirmPassword) {
-            console.log(values)
+            handleRegisterSubmit(values)
             resetForm()
             onClose()
-          } else {
-            console.log(false)
           }
         }}
         validateOnMount
       >
-        {({ errors, touched, handleChange, handleSubmit, values, isValid }) => (
+        {({ errors, touched, handleChange, values, isValid }) => (
           <Form noValidate>
             <Field
               className={errors.login && touched.login ? errorInputClassName : inputClassName}
@@ -131,7 +135,6 @@ function Register({ isOpen, onClose, isLoginClick }) {
               variant="submit"
               handler="submit"
               type="submit"
-              onSubmit={handleSubmit}
               onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
               disabled={disabled}
             />

@@ -37,8 +37,13 @@ function Login({ isOpen, onClose }) {
     rounded-default
   `
 
+  function handleLoginSubmit(values) {
+    //TODO: submit login
+  }
+
   return (
     <Popup
+      variant="form"
       title="Авторизация"
       description="Пожалуйста введите ваши данные для авторизации на нашем сайте"
       isOpen={isOpen}
@@ -50,13 +55,13 @@ function Login({ isOpen, onClose }) {
           password: '',
         }}
         onSubmit={(values, {resetForm}) => {
-          console.log(values)
+          handleLoginSubmit(values)
           resetForm()
           onClose()
         }}
         validateOnMount
       >
-        {({ errors, touched, handleChange, handleSubmit, values, isValid }) => (
+        {({ errors, touched, handleChange, values, isValid }) => (
           <Form noValidate>
             <Field
               className={errors.email && touched.email ? errorInputClassName : inputClassName}
@@ -86,7 +91,6 @@ function Login({ isOpen, onClose }) {
               variant="submit"
               handler="submit"
               type="submit"
-              onSubmit={handleSubmit}
               onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
               disabled={disabled}
             />

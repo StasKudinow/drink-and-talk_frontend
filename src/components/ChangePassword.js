@@ -38,8 +38,13 @@ function ChangePassword({ isOpen, onClose }) {
       rounded-default
     `
 
+  function handleChangePasswordSubmit(values) {
+    //TODO: submit changePassword
+  }
+
   return (
     <Popup
+      variant="form"
       title="Смена пароля"
       isOpen={isOpen}
       onClose={onClose}
@@ -52,16 +57,14 @@ function ChangePassword({ isOpen, onClose }) {
         }}
         onSubmit={(values, {resetForm}) => {
           if (values.password === values.confirmPassword && values.password !== values.oldPassword) {
-            console.log(values)
+            handleChangePasswordSubmit(values)
             resetForm()
             onClose()
-          } else {
-            console.log(false)
           }
         }}
         validateOnMount
       >
-        {({ errors, touched, handleChange, handleSubmit, values, isValid }) => (
+        {({ errors, touched, handleChange, values, isValid }) => (
           <Form noValidate>
             <Field
               className={errors.oldPassword && touched.oldPassword ? errorInputClassName : inputClassName}
@@ -98,7 +101,6 @@ function ChangePassword({ isOpen, onClose }) {
               variant="submit"
               handler="submit"
               type="submit"
-              onSubmit={handleSubmit}
               onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
               disabled={disabled}
             />
