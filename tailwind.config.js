@@ -26,6 +26,7 @@ module.exports = {
         profile_button: 'url(../src/images/profile_button.svg)',
         bar_image: 'url(../src/images/bar_image.svg)',
         popup_close_btn: 'url(../src/images/popup_close_btn.svg)',
+        add_image: 'url(../src/images/add_image.svg)',
       },
       colors: {
         black: '#232323',

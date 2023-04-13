@@ -4,9 +4,9 @@ import { Formik, Form, Field } from 'formik'
 import Popup from './Popup'
 import Button from './Button'
 
-import { validateLogin, validateEmail, validatePassword, validateConfirmPassword } from '../utils/validate'
+import { validatePassword, validateConfirmPassword, validateOldPassword } from '../utils/validate'
 
-function Register({ isOpen, onClose, isLoginClick }) {
+function ChangePassword({ isOpen, onClose }) {
 
   const [disabled, setDisabled] = useState(false)
 
@@ -38,34 +38,26 @@ function Register({ isOpen, onClose, isLoginClick }) {
       rounded-default
     `
 
-  function handleRegisterSubmit(values) {
-    //TODO: submit register
-  }
-
-
-  function handleLoginClick() {
-    onClose()
-    isLoginClick()
+  function handleChangePasswordSubmit(values) {
+    //TODO: submit changePassword
   }
 
   return (
     <Popup
       variant="form"
-      title="Регистрация"
-      description="Пожалуйста введите ваши данные для регистрации на нашем сайте"
+      title="Смена пароля"
       isOpen={isOpen}
       onClose={onClose}
     >
       <Formik
         initialValues={{
-          login: '',
-          email: '',
+          oldPassword: '',
           password: '',
           confirmPassword: '',
         }}
         onSubmit={(values, {resetForm}) => {
-          if (values.password === values.confirmPassword) {
-            handleRegisterSubmit(values)
+          if (values.password === values.confirmPassword && values.password !== values.oldPassword) {
+            handleChangePasswordSubmit(values)
             resetForm()
             onClose()
           }
@@ -75,30 +67,20 @@ function Register({ isOpen, onClose, isLoginClick }) {
         {({ errors, touched, handleChange, values, isValid }) => (
           <Form noValidate>
             <Field
-              className={errors.login && touched.login ? errorInputClassName : inputClassName}
-              type="text"
-              name="login"
-              placeholder="Логин"
-              value={values.login}
+              className={errors.oldPassword && touched.oldPassword ? errorInputClassName : inputClassName}
+              type="password"
+              name="oldPassword"
+              placeholder="Старый пароль"
+              value={values.oldPassword}
               onChange={handleChange}
-              validate={validateLogin}
-              required
-            />
-            <Field
-              className={errors.email && touched.email ? errorInputClassName : inputClassName}
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={values.email}
-              onChange={handleChange}
-              validate={validateEmail}
+              validate={validateOldPassword}
               required
             />
             <Field
               className={errors.password && touched.password ? errorInputClassName : inputClassName}
               type="password"
               name="password"
-              placeholder="Пароль"
+              placeholder="Новый пароль"
               value={values.password}
               onChange={handleChange}
               validate={validatePassword}
@@ -114,24 +96,8 @@ function Register({ isOpen, onClose, isLoginClick }) {
               validate={validateConfirmPassword}
               required
             />
-            <label className="w-31 mb-4 flex gap-2 cursor-pointer">
-              <input
-                className="w-4 h-4 rounded-default cursor-pointer"
-                type="checkbox"
-              />
-              <p className="font-normal text-text-xsm-all leading-5 text-gray">Мне есть 18 лет</p>
-            </label>
-            <p className="mb-4 font-normal text-text-xsm-all leading-5 text-white">
-              Или&nbsp;
-              <button
-                type="button"
-                className="text-orange hover:text-gray duration-300"
-                onClick={handleLoginClick}>войдите
-              </button>
-              &nbsp;в аккаунт
-            </p>
             <Button
-              text="Регистрация"
+              text="Сохранить изменения"
               variant="submit"
               handler="submit"
               type="submit"
@@ -145,4 +111,4 @@ function Register({ isOpen, onClose, isLoginClick }) {
   )
 }
 
-export default Register
+export default ChangePassword
