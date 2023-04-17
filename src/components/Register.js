@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik'
 import Popup from './Popup'
 import Button from './Button'
 
-import { validateLogin, validateEmail, validatePassword, validateConfirmPassword } from '../utils/validate'
+import { validateLogin, validateEmail, validatePassword, validateConfirmPassword, validateCheckbox } from '../utils/validate'
 
 function Register({ isOpen, onClose, isLoginClick }) {
 
@@ -115,11 +115,14 @@ function Register({ isOpen, onClose, isLoginClick }) {
               required
             />
             <label className="w-31 mb-4 flex gap-2 cursor-pointer">
-              <input
+              <Field
                 className="w-4 h-4 rounded-default cursor-pointer"
                 type="checkbox"
+                name="toggle"
+                validate={validateCheckbox}
+                required
               />
-              <p className="font-normal text-text-xsm-all leading-5 text-gray">Мне есть 18 лет</p>
+              <p className={`font-normal text-text-xsm-all leading-5 duration-300 ${values.toggle ? 'text-white' : 'text-gray'}`}>Мне есть 18 лет</p>
             </label>
             <p className="mb-4 font-normal text-text-xsm-all leading-5 text-white">
               Или&nbsp;
@@ -133,7 +136,7 @@ function Register({ isOpen, onClose, isLoginClick }) {
             <Button
               text="Регистрация"
               variant="submit"
-              handler="submit"
+              handler="null"
               type="submit"
               onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
               disabled={disabled}

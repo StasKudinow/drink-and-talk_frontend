@@ -89,7 +89,7 @@ function Login({ isOpen, onClose }) {
             <Button
               text="Авторизация"
               variant="submit"
-              handler="submit"
+              handler="null"
               type="submit"
               onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
               disabled={disabled}

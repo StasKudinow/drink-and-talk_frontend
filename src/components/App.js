@@ -16,7 +16,7 @@ import CreateBar from './CreateBar'
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true)
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false)
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false)
   const [isChangePasswordPopupOpen, setIsChangePasswordPopupOpen] = useState(false)
