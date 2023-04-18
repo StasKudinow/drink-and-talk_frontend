@@ -1,16 +1,15 @@
 import { useState } from 'react'
 
-import { topics, drinks } from '../utils/costants' //изначальные массивы селекторов
+import { topics, drinks } from '../utils/costants'
 
 import Selector from './Selector'
 import Button from './Button'
 
 function Categories() {
 
-  //selectedItems - переменная-массив выбраных пользователем селекторов. Реализация через хук useState. В дальнейшем думаю надо будет прокидывать его на бэк, при сабмите кнопки.
   const [selectedItems, setSelectedItems] = useState([])
 
-  console.log(selectedItems) //потом удалить. Для наглядности добавления/удаления объектов в массив
+  console.log(selectedItems)
 
   return (
     <main className="container mx-auto w-222 flex flex-col items-center pt-20 pb-28">
@@ -23,7 +22,7 @@ function Categories() {
         <div className="w-82">
           <h3 className="mb-6 font-normal text-8xl leading-115 text-black opacity-50">Тема</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
-            {topics.map((topic) => { // мапим объекты селекторов из изначального массива
+            {topics.map((topic) => {
               return <li key={topic.id}>
                 <Selector
                   id={topic.id}
@@ -39,7 +38,7 @@ function Categories() {
         <div className="w-82">
           <h3 className="mb-6 font-normal text-8xl leading-115 text-black text-center opacity-50">Напитки</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
-            {drinks.map((drink) => { // мапим объекты селекторов из изначального массива
+            {drinks.map((drink) => {
               return <li key={drink.id}>
                 <Selector
                   id={drink.id}
@@ -53,7 +52,7 @@ function Categories() {
         </div>
       </section>
       <Button
-        text="Начать видео - связь"
+        text="Перейти к барам"
         variant="orange-button"
         handler="link"
         type="button"

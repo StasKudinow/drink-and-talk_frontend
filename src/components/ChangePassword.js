@@ -99,7 +99,7 @@ function ChangePassword({ isOpen, onClose }) {
             <Button
               text="Сохранить изменения"
               variant="submit"
-              handler="submit"
+              handler="null"
               type="submit"
               onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
               disabled={disabled}

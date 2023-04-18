@@ -53,6 +53,7 @@ function CreateBar({ isOpen, onClose }) {
 
   function handleCreateBarSubmit(values) {
     //TODO: submit createBar
+    console.log(values)
   }
 
   return (
@@ -63,14 +64,15 @@ function CreateBar({ isOpen, onClose }) {
     >
       <Formik
         initialValues={{
-          barName: ''
+          barName: '',
+          file: null
         }}
         onSubmit={values => {
           handleCreateBarSubmit(values)
         }}
         validateOnMount
       >
-        {({ errors, touched, handleChange, values, isValid }) => (
+        {({ errors, touched, handleChange, values, isValid, setFieldValue }) => (
           <Form className="flex flex-col items-center" noValidate>
             <p className="mb-2 font-normal text-text-sm-web leading-6 text-white text-center">
               Впишите название бара
@@ -87,14 +89,38 @@ function CreateBar({ isOpen, onClose }) {
             <p className="mb-2 font-normal text-text-sm-web leading-6 text-white text-center">
               Добавить обложку (необязательно)
             </p>
+            {!values.file ?
+              <label className="w-32 h-24 mb-2 flex items-center justify-center bg-white rounded-default hover:cursor-pointer hover:opacity-50 duration-300">
+                <div className="w-8 h-8 bg-add_image hover:cursor-pointer" />
+                <input
+                  type="file"
+                  name="file"
+                  onChange={(e) => {
+                    const fileReader = new FileReader()
+                    fileReader.onload = () => {
+                      setFieldValue('file', fileReader.result)
+                    }
+                    fileReader.readAsDataURL(e.target.files[0])
+                  }}
+                  accept="image/*"
+                  hidden
+                />
+              </label> :
+              <img
+                className="w-32 h-24 mb-2 bg-cover rounded-default"
+                src={values.file}
+                alt="обложка"
+              />
+            }
             <button
-              className="w-32 h-24 mb-8 flex items-center justify-center bg-white rounded-default hover:cursor-pointer hover:opacity-50 duration-300"
+              className="mb-8 font-normal text-4 leading-4 text-white text-center underline hover:opacity-50 duration-300"
               type="button"
+              onClick={() => setFieldValue('file', null)}
             >
-              <div className="w-8 h-8 bg-add_image" />
+              удалить фото
             </button>
             <p className="mb-2 font-normal text-text-sm-web leading-6 text-white text-center">
-              Выберите количество людей, которое сможет к вам присоедениться
+              Выберите количество людей, которое сможет к вам присоединиться
             </p>
             <div className="w-26 h-10 mb-8 flex justify-between">
               <button
@@ -118,7 +144,7 @@ function CreateBar({ isOpen, onClose }) {
             <Button
               text="Создать бар"
               variant="submit"
-              handler="submit"
+              handler="null"
               type="submit"
               onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
               disabled={disabled}

@@ -26,7 +26,7 @@ function Bar() {
       </section>
       <Button
         text="Назад"
-        variant="green-button"
+        variant="orange-button"
         handler="stop-stream"
         type="button"
         onRefreshPage={refreshPage}

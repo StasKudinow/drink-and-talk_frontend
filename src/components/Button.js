@@ -11,7 +11,6 @@ function Button({
   onRefreshPage,
   onPopupOpen,
   onClose,
-  onSubmit,
   onDisabled,
   disabled,
 }) {
@@ -20,6 +19,9 @@ function Button({
 
   function openLink() {
     history.push(url)
+  }
+  function returnNull() {
+    return null
   }
 
   function handleClick() {
@@ -39,8 +41,8 @@ function Button({
       case 'close-popup':
         onClose()
         break
-      case 'submit':
-        onSubmit()
+      case 'null':
+        returnNull()
         break
       default:
         throw new Error('Button handler not found')

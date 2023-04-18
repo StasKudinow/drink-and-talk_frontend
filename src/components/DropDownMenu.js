@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function DropDownMenu({ isOpen, onClose, onLogout }) {
 
-  const popupClassName = (
+  const menuClassName = (
     `
       w-51
       h-27
@@ -17,7 +17,7 @@ function DropDownMenu({ isOpen, onClose, onLogout }) {
       z-10
       ${isOpen ? 'flex' : 'hidden'}
     `
-  ) // Анимации не работают с display: none. Подумать
+  )
 
   function handleLogoutClick() {
     onLogout()
@@ -25,7 +25,7 @@ function DropDownMenu({ isOpen, onClose, onLogout }) {
   }
 
   return (
-    <ul className={popupClassName}>
+    <ul className={menuClassName}>
       <li className="mb-4 font-normal text-text-sm-web text-white leading-5">
         <Link to="/profile" onClick={onClose}>Редактировать профиль</Link>
       </li>
