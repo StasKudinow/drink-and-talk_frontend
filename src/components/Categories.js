@@ -58,7 +58,7 @@ function Categories() {
         <div className="w-50 h-104 bg-categories_img bg-cover" />
         <div className="flex flex-col">
           <h2 className="mb-4 font-normal text-8xl leading-115 text-black text-center opacity-50">Напитки</h2>
-          <div className="w-59 mb-4 px-2 py-5 flex justify-between items-center border rounded-default">
+          <div className="w-59 px-2 py-5 flex justify-between items-center border rounded-default">
             <h3 className="font-normal text-h3-web leading-8 text-black">Выбрать напиток</h3>
             <Button
               variant="drop-down-button"
