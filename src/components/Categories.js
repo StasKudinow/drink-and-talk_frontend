@@ -8,20 +8,41 @@ import Button from './Button'
 function Categories() {
 
   const [selectedItems, setSelectedItems] = useState([])
+  const [isLeftMenuOpen, setIsLeftMenuOpen] = useState(false)
+  const [isRightMenuOpen, setIsRightMenuOpen] = useState(false)
 
   console.log(selectedItems)
 
+  function handleLeftMenuButtonClick() {
+    setIsLeftMenuOpen(!isLeftMenuOpen)
+  }
+
+  function handleRightMenuButtonClick() {
+    setIsRightMenuOpen(!isRightMenuOpen)
+  }
+
   return (
     <main className="container mx-auto w-222 flex flex-col items-center pt-20 pb-28">
-      <h2 className="mb-7 text-h2-mob leading-h2-web text-black">
+      <p className="mb-7 text-h2-mob leading-h2-web text-black">
         Привет, рады тебя видеть на нашем сервисе, чтобы мы могли подобрать
         для тебя собеседника, выбери нужные разделы ниже, а так же категорию
         напитков
-      </h2>
-      <section className="w-222 flex flex-row justify-between mb-15">
-        <div className="w-82">
-          <h3 className="mb-6 font-normal text-8xl leading-115 text-black opacity-50">Тема</h3>
-          <ul className="flex flex-wrap gap-x-5 gap-y-3">
+      </p>
+      <section className="w-222 flex flex-row justify-between mb-15 relative">
+        <div className="w-161 h-113 bg-dots_3 bg-cover absolute top-45 left-94" />
+        <div className="flex flex-col">
+          <h2 className="mb-4 font-normal text-8xl leading-115 text-black opacity-50">Тема</h2>
+          <div className="w-50 px-2 py-5 flex justify-between items-center border rounded-default">
+            <h3 className="font-normal text-h3-web leading-8 text-black">Выбрать тему</h3>
+            <Button
+              variant="drop-down-button"
+              handler="drop-down"
+              type="button"
+              onOpenMenu={handleLeftMenuButtonClick}
+              isMenuOpen={isLeftMenuOpen}
+            />
+          </div>
+          <ul className={`px-2 py-6 bg-black flex-col gap-6 rounded-default absolute top-48 left-0 ${isLeftMenuOpen ? 'flex' : 'hidden'}`}>
             {topics.map((topic) => {
               return <li key={topic.id}>
                 <Selector
@@ -35,9 +56,19 @@ function Categories() {
           </ul>
         </div>
         <div className="w-50 h-104 bg-categories_img bg-cover" />
-        <div className="w-82">
-          <h3 className="mb-6 font-normal text-8xl leading-115 text-black text-center opacity-50">Напитки</h3>
-          <ul className="flex flex-wrap gap-x-5 gap-y-3">
+        <div className="flex flex-col">
+          <h2 className="mb-4 font-normal text-8xl leading-115 text-black text-center opacity-50">Напитки</h2>
+          <div className="w-59 mb-4 px-2 py-5 flex justify-between items-center border rounded-default">
+            <h3 className="font-normal text-h3-web leading-8 text-black">Выбрать напиток</h3>
+            <Button
+              variant="drop-down-button"
+              handler="drop-down"
+              type="button"
+              onOpenMenu={handleRightMenuButtonClick}
+              isMenuOpen={isRightMenuOpen}
+            />
+          </div>
+          <ul className={`px-2 py-6 bg-black flex-col gap-6 rounded-default absolute top-48 right-20 ${isRightMenuOpen ? 'flex' : 'hidden'}`}>
             {drinks.map((drink) => {
               return <li key={drink.id}>
                 <Selector
