@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 import Button from './Button'
 import DropDownMenu from './DropDownMenu'
@@ -9,6 +9,7 @@ function Header({ loggedIn, onPopupOpen, onLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const history = useHistory()
+  const location = useLocation()
 
   let profileButton
 
@@ -45,7 +46,7 @@ function Header({ loggedIn, onPopupOpen, onLogout }) {
   }
 
   return (
-    <header className="container mx-auto w-222 pt-7 flex justify-between">
+    <header className={`container mx-auto w-222 pt-7 ${location.pathname === '/profile' ? 'hidden' : 'flex'} justify-between`}>
       <nav>
         <ul className="w-66 flex justify-between">
           <li>

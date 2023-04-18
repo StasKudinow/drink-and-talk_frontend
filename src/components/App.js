@@ -11,6 +11,7 @@ import Register from './Register'
 import Login from './Login'
 import ChangePassword from './ChangePassword'
 import CreateBar from './CreateBar'
+import Profile from './Profile'
 
 
 
@@ -78,6 +79,13 @@ function App() {
           loggedIn={loggedIn}
         />
 
+        <ProtectedRoute
+          path="/profile"
+          component={Profile}
+          loggedIn={loggedIn}
+          onPopupOpen={handleChangePasswordPopupOpen}
+        />
+
       </Switch>
 
       <Footer />
@@ -107,4 +115,3 @@ function App() {
 }
 
 export default App
-

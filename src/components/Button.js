@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 function Button({
   variant,
@@ -16,6 +16,7 @@ function Button({
 }) {
 
   const history = useHistory()
+  const location = useLocation()
 
   function openLink() {
     history.push(url)
@@ -54,11 +55,11 @@ function Button({
   switch (variant) {
     case 'black-button':
       buttonClassName = `
-          w-70
-          h-15
+          ${location.pathname === '/profile' ? 'w-51': 'w-70'}
+          ${location.pathname === '/profile' ? 'h-11': 'h-15'}
           bg-black
           font-normal
-          text-h3-web
+          ${location.pathname === '/profile' ? 'text-text-sm-web': 'text-h3-web'}
           leading-7
           text-white
           rounded-default
@@ -130,9 +131,9 @@ function Button({
           h-10
           bg-orange
           font-normal
-          text-22
+          ${location.pathname === '/profile' ? 'text-text-sm-web': 'text-22'}
           leading-6
-          text-black
+          ${location.pathname === '/profile' ? 'text-white': 'text-black'}
           rounded-default
           duration-300
           z-10
