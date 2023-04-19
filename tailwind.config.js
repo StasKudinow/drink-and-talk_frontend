@@ -30,6 +30,8 @@ module.exports = {
         popup_close_btn: 'url(../src/images/popup_close_btn.svg)',
         add_image: 'url(../src/images/add_image.svg)',
         profile_image: 'url(../src/images/profile_image.svg)',
+        add_bar: 'url(../src/images/add_bar.svg)',
+        add_bar_black: 'url(../src/images/add_bar_black.svg)',
       },
       colors: {
         black: '#232323',
