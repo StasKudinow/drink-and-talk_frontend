@@ -6,26 +6,12 @@ function Selector(props) {
 
   const selectorClassName = (
     `
-      h-17
-      px-2
-      flex
-      justify-center
-      items-center
-      ${isClicked ? 'shadow-button-shadow bg-black bg-opacity-10' : 'bg-black'}
-      rounded-default
-      cursor-pointer
-      duration-300
-      hover:bg-opacity-10
-    `
-  )
-
-  const textClassName = (
-    `
       font-normal
       text-h3-web
       leading-8
-      hover:text-black
-      ${isClicked ? 'text-black' : 'text-white'}
+      duration-300
+      cursor-pointer
+      ${isClicked ? 'text-orange' : 'text-white'}
     `
   )
 
@@ -46,9 +32,9 @@ function Selector(props) {
   }
 
   return (
-    <div className={selectorClassName} onClick={handleClick}>
-      <p className={textClassName}>{props.text}</p>
-    </div>
+    <>
+      <h3 className={selectorClassName} onClick={handleClick}>{props.text}</h3>
+    </>
   )
 }
 

@@ -19,6 +19,7 @@ module.exports = {
       backgroundImage: {
         dots_1: 'url(../src/images/dots_1.svg)',
         dots_2: 'url(../src/images/dots_2.svg)',
+        dots_3: 'url(../src/images/dots_3.svg)',
         main_img: 'url(../src/images/main_img.svg)',
         main_img_2: 'url(../src/images/main_img_2.svg)',
         categories_img: 'url(../src/images/categories_img.svg)',
