@@ -32,29 +32,10 @@ export default function VideoBlock() {
     }
   }
 
-  const turnOnMicrophone = async () => {
-    try {
-      const newStream = await stream.turnOnMicrophone()
-      console.log('Microphone turned on:', newStream)
-    } catch (err) {
-      setError(err.message)
-    }
-  }
-
-  const turnOffMicrophone = async () => {
-    try {
-      await stream.turnOffMicrophone()
-      console.log('Microphone turned off')
-    } catch (err) {
-      setError(err.message)
-    }
-  }
-
   return (
     <div>
       <video
         autoPlay
-        muted
         playsInline
         className="w-full h-full border"></video>
       {error && <div className="text-red-500">{error}</div>}
@@ -72,15 +53,9 @@ export default function VideoBlock() {
       </button>
       <button
         onClick={() => {
-          turnOnMicrophone()
+          stream.muteToggler()
         }}>
-        Turn on microphone
-      </button>
-      <button
-        onClick={() => {
-          turnOffMicrophone()
-        }}>
-        Turn off microphone
+        mute/onmute
       </button>
     </div>
   )

@@ -2,16 +2,19 @@ class VideoController {
   private stream?: MediaStream
 
   constructor(private width: number, private height: number) {}
+  private isMuted = true
 
   public async getVideoStream(): Promise<MediaStream> {
     try {
       this.stream = await navigator.mediaDevices.getUserMedia({
-        audio: false,
+        audio: this.isMuted,
         video: {
           width: { ideal: this.width },
           height: { ideal: this.height },
         },
       })
+
+
       return this.stream
     } catch (err) {
       console.error('Error getting video stream:', err)
@@ -49,37 +52,12 @@ class VideoController {
     }
   }
 
-  public async turnOnMicrophone(): Promise<MediaStream> {
-  try {
-    this.stream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: {
-        width: { ideal: this.width },
-        height: { ideal: this.height },
-      },
-    })
-    return this.stream
-  } catch (err) {
-    console.error('Error turning on microphone:', err)
-    throw err
-  }
-}
-
-public async turnOffMicrophone(): Promise<void> {
-  try {
+  public muteToggler() : void {
     if (this.stream) {
-      this.stream.getTracks().forEach((track) => {
-        if (track.kind === 'audio') {
-          track.stop()
-        }
-      })
+      this.stream.getAudioTracks()[0].enabled = !this.isMuted;
+      this.isMuted = !this.isMuted;
     }
-  } catch (err) {
-    console.error('Error turning off microphone:', err)
-    throw err
   }
-}
-
 }
 
 export default VideoController
