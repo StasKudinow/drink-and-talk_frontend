@@ -48,6 +48,38 @@ class VideoController {
       this.stream = undefined
     }
   }
+
+  public async turnOnMicrophone(): Promise<MediaStream> {
+  try {
+    this.stream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: {
+        width: { ideal: this.width },
+        height: { ideal: this.height },
+      },
+    })
+    return this.stream
+  } catch (err) {
+    console.error('Error turning on microphone:', err)
+    throw err
+  }
+}
+
+public async turnOffMicrophone(): Promise<void> {
+  try {
+    if (this.stream) {
+      this.stream.getTracks().forEach((track) => {
+        if (track.kind === 'audio') {
+          track.stop()
+        }
+      })
+    }
+  } catch (err) {
+    console.error('Error turning off microphone:', err)
+    throw err
+  }
+}
+
 }
 
 export default VideoController

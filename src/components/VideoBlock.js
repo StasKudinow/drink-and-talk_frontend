@@ -32,6 +32,24 @@ export default function VideoBlock() {
     }
   }
 
+  const turnOnMicrophone = async () => {
+    try {
+      const newStream = await stream.turnOnMicrophone()
+      console.log('Microphone turned on:', newStream)
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  const turnOffMicrophone = async () => {
+    try {
+      await stream.turnOffMicrophone()
+      console.log('Microphone turned off')
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
   return (
     <div>
       <video
@@ -49,7 +67,21 @@ export default function VideoBlock() {
       <button
         onClick={() => {
           changeResolution(1000, 480)
-        }}>Click button 1000</button>
+        }}>
+        Click button 1000
+      </button>
+      <button
+        onClick={() => {
+          turnOnMicrophone()
+        }}>
+        Turn on microphone
+      </button>
+      <button
+        onClick={() => {
+          turnOffMicrophone()
+        }}>
+        Turn off microphone
+      </button>
     </div>
   )
 }
