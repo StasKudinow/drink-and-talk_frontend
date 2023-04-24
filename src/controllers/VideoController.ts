@@ -3,7 +3,7 @@ class VideoController {
 
   constructor(private width: number, private height: number) {}
   private isMuted = true
-
+	
   public async getVideoStream(): Promise<MediaStream> {
     try {
       this.stream = await navigator.mediaDevices.getUserMedia({

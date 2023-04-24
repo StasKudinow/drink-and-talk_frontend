@@ -1,27 +1,14 @@
 import VideoController from '../controllers/VideoController.ts'
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import micOn from '../images/icons/micOn.svg'
 import micOff from '../images/icons/micOff.svg'
+import chRes480 from '../images/icons/iconShit480.jpg'
+import chRes720 from '../images/icons/iconShit720.png'
+
 
 const stream = new VideoController(1920, 1080)
 
-function MicToggle() {
-  const [isMicOn, setIsMicOn] = useState(true)
-
-  const toggleMic = () => {
-    setIsMicOn(!isMicOn)
-  }
-
-  return (
-    <img
-      className="absolute top-95 left-110"
-      src={isMicOn ? micOn : micOff}
-      alt="mic"
-      onClick={toggleMic}
-    />
-  )
-}
 
 export default function VideoBlock() {
   const [error, setError] = useState(null)
@@ -52,31 +39,38 @@ export default function VideoBlock() {
     }
   }
 
+	  const [isMicOn, setIsMicOn] = useState(true)
+
+    const toggleMic = () => {
+      const streamObj = stream.muteToggler()
+      if (streamObj) {
+        streamObj.enabled = !isMicOn
+      }
+      setIsMicOn(!isMicOn)
+    }
+
   return (
-    <div>
+    <div className="relative">
       <video
         autoPlay
         playsInline
-        className="w-full h-full border relative"></video>
+        className="relative w-full h-full border"></video>
       {error && <div className="text-red-500">{error}</div>}
       <button
-        onClick={() => {
-          changeResolution(640, 480)
-        }}>
-        Click button 640
+        onClick={() => changeResolution(640, 480)}
+        className="absolute top-55 left-80">
+        <img src={chRes480} alt="mic" />
       </button>
       <button
-        onClick={() => {
-          changeResolution(1000, 480)
-        }}>
-        Click button 1000
+        onClick={() => changeResolution(800, 480)}
+        className="absolute top-55 left-95">
+        <img src={chRes720} alt="mic" />
       </button>
       <button
-        className=""
-        onClick={() => {
-          stream.muteToggler()
-        }}>
-        <MicToggle className="" />
+        className="absolute top-55 left-110 w-8 h-8"
+        onClick={toggleMic}
+        type="button">
+        <img src={isMicOn ? micOn : micOff} alt="mic" />
       </button>
     </div>
   )
