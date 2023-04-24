@@ -97,23 +97,6 @@ module.exports = {
       transitionProperty: {
         'top': 'top',
       },
-      animation: {
-        smooth: 'smooth .3s linear',
-      },
-      keyframes: {
-        smooth: {
-          'from': {
-            display: 'block',
-            opacity: '0',
-            visibility: 'hidden',
-          },
-          'to': {
-            display: 'block',
-            opacity: '0.5',
-            visibility: 'visible',
-          },
-        }
-      }
     },
   },
   plugins: [],
