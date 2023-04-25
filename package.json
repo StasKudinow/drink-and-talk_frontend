@@ -52,10 +52,10 @@
     "type": "git",
     "url": "git+https://github.com/drink-and-talk/drink-and-talk_frontend.git"
   },
-  "author": "",
+  "author": "Hold my deer DOO",
+  "email": "holdmydeercompany@gmail.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/drink-and-talk/drink-and-talk_frontend/issues"
-  },
-  "homepage": "https://github.com/drink-and-talk/drink-and-talk_frontend#readme"
+  }
 }
