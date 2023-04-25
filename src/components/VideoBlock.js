@@ -39,7 +39,7 @@ export default function VideoBlock() {
     }
   }
 
-	  const [isMicOn, setIsMicOn] = useState(true)
+    const [isMicOn, setIsMicOn] = useState(true)
 
     const toggleMic = () => {
       const streamObj = stream.muteToggler()
@@ -50,7 +50,7 @@ export default function VideoBlock() {
     }
 
   return (
-    <div className="relative">
+    <div>
       <video
         autoPlay
         playsInline
@@ -58,16 +58,16 @@ export default function VideoBlock() {
       {error && <div className="text-red-500">{error}</div>}
       <button
         onClick={() => changeResolution(640, 480)}
-        className="absolute top-55 left-80">
+        className="absolute top-[45%] left-[22%]">
         <img src={chRes480} alt="mic" />
       </button>
       <button
         onClick={() => changeResolution(800, 480)}
-        className="absolute top-55 left-95">
+        className="absolute top-[45%] left-[26%]">
         <img src={chRes720} alt="mic" />
       </button>
       <button
-        className="absolute top-55 left-110 w-8 h-8"
+        className="absolute top-[45%] left-[30%] w-8 h-8"
         onClick={toggleMic}
         type="button">
         <img src={isMicOn ? micOn : micOff} alt="mic" />
