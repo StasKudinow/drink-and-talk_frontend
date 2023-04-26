@@ -1,4 +1,4 @@
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function Button({
   variant,
@@ -16,7 +16,6 @@ function Button({
 }) {
 
   const history = useHistory()
-  const location = useLocation()
 
   function openLink() {
     history.push(url)
@@ -55,11 +54,28 @@ function Button({
   switch (variant) {
     case 'black-button':
       buttonClassName = `
-          ${location.pathname === '/profile' ? 'w-51': 'w-70'}
-          ${location.pathname === '/profile' ? 'h-11': 'h-15'}
+          w-70
+          h-15
           bg-black
           font-normal
-          ${location.pathname === '/profile' ? 'text-text-sm-web': 'text-h3-web'}
+          text-h3-web
+          leading-7
+          text-white
+          rounded-default
+          duration-300
+          z-10
+          active:shadow-button-shadow
+          hover:bg-opacity-10
+          hover:text-black
+        `
+      break
+    case 'black-button-profile':
+      buttonClassName = `
+          w-51
+          h-11
+          bg-black
+          font-normal
+          text-text-sm-web
           leading-7
           text-white
           rounded-default
@@ -131,9 +147,24 @@ function Button({
           h-10
           bg-orange
           font-normal
-          ${location.pathname === '/profile' ? 'text-text-sm-web': 'text-22'}
+          text-22
           leading-6
-          ${location.pathname === '/profile' ? 'text-white': 'text-black'}
+          text-black
+          rounded-default
+          duration-300
+          z-10
+          ${disabled ? 'opacity-50 cursor-auto' : 'active:shadow-button-shadow hover:bg-opacity-10 hover:text-white'}
+        `
+      break
+    case 'submit-profile':
+      buttonClassName = `
+          w-71
+          h-10
+          bg-orange
+          font-normal
+          text-text-sm-web
+          leading-6
+          text-white
           rounded-default
           duration-300
           z-10

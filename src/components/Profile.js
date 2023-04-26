@@ -108,7 +108,7 @@ function Profile({ onPopupOpen }) {
               </button>
               <Button
                 text="Сохранить данные"
-                variant="submit"
+                variant="submit-profile"
                 handler="null"
                 type="submit"
                 onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
@@ -127,7 +127,7 @@ function Profile({ onPopupOpen }) {
         <div className="flex justify-between">
           <Button
             text="Начать видео - связь"
-            variant="black-button"
+            variant="black-button-profile"
             handler="null"
             type="button"
           />
