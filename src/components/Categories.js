@@ -87,7 +87,7 @@ function Categories() {
         variant="orange-button"
         handler="link"
         type="button"
-        url="/bar"
+        url="/barlist"
       />
     </main>
   )

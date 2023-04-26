@@ -69,6 +69,23 @@ function Button({
           hover:text-black
         `
       break
+    case 'black-button-profile':
+      buttonClassName = `
+          w-51
+          h-11
+          bg-black
+          font-normal
+          text-text-sm-web
+          leading-7
+          text-white
+          rounded-default
+          duration-300
+          z-10
+          active:shadow-button-shadow
+          hover:bg-opacity-10
+          hover:text-black
+        `
+      break
     case 'orange-button':
       buttonClassName = `
           w-70
@@ -133,6 +150,21 @@ function Button({
           text-22
           leading-6
           text-black
+          rounded-default
+          duration-300
+          z-10
+          ${disabled ? 'opacity-50 cursor-auto' : 'active:shadow-button-shadow hover:bg-opacity-10 hover:text-white'}
+        `
+      break
+    case 'submit-profile':
+      buttonClassName = `
+          w-71
+          h-10
+          bg-orange
+          font-normal
+          text-text-sm-web
+          leading-6
+          text-white
           rounded-default
           duration-300
           z-10

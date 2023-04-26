@@ -23,7 +23,7 @@ function Register({ isOpen, onClose, isLoginClick }) {
       rounded-default
     `
 
-    const errorInputClassName =
+  const errorInputClassName =
     `
       w-71
       h-10
