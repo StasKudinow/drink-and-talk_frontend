@@ -6,7 +6,7 @@ import Button from './Button'
 
 import { validateLogin, validateEmail, validatePassword, validateConfirmPassword, validateCheckbox } from '../utils/validate'
 
-function Register({ isOpen, onClose, isLoginClick }) {
+function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
 
   const [disabled, setDisabled] = useState(false)
 
@@ -39,7 +39,14 @@ function Register({ isOpen, onClose, isLoginClick }) {
     `
 
   function handleRegisterSubmit(values) {
-    //TODO: submit register
+    onRegister(values.username, values.email, values.password)
+      .then(() => {
+        onLogin(values.email, values.password)
+        console.log('Success!')
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
   }
 
 
@@ -58,7 +65,7 @@ function Register({ isOpen, onClose, isLoginClick }) {
     >
       <Formik
         initialValues={{
-          login: '',
+          username: '',
           email: '',
           password: '',
           confirmPassword: '',
@@ -75,11 +82,11 @@ function Register({ isOpen, onClose, isLoginClick }) {
         {({ errors, touched, handleChange, values, isValid }) => (
           <Form noValidate>
             <Field
-              className={errors.login && touched.login ? errorInputClassName : inputClassName}
+              className={errors.username && touched.username ? errorInputClassName : inputClassName}
               type="text"
-              name="login"
+              name="username"
               placeholder="Логин"
-              value={values.login}
+              value={values.username}
               onChange={handleChange}
               validate={validateLogin}
               required

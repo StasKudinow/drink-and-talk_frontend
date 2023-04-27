@@ -14,11 +14,12 @@ import CreateBar from './CreateBar'
 import Profile from './Profile'
 import BarList from './BarList'
 
+import * as api from '../utils/api'
 
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false)
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false)
   const [isChangePasswordPopupOpen, setIsChangePasswordPopupOpen] = useState(false)
@@ -49,6 +50,22 @@ function App() {
 
   function onLogout() {
     setLoggedIn(false)
+  }
+
+  function onRegister(username, email, password) {
+    api.register(username, email, password)
+      .then((res) => {
+        return res
+      })
+  }
+
+  function onLogin(email, password) {
+    api.login(email, password)
+      .then((res) => {
+        if (res.auth_token) {
+          setLoggedIn(true)
+        }
+      })
   }
 
   return (
@@ -102,11 +119,14 @@ function App() {
         isOpen={isRegisterPopupOpen}
         onClose={closeAllPopups}
         isLoginClick={handleLoginPopupOpen}
+        onRegister={onRegister}
+        onLogin={onLogin}
       />
 
       <Login
         isOpen={isLoginPopupOpen}
         onClose={closeAllPopups}
+        onLogin={onLogin}
       />
 
       <ChangePassword

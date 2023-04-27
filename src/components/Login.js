@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { Formik, Form, Field } from 'formik'
+import { useHistory } from "react-router-dom"
 
 import Popup from './Popup'
 import Button from './Button'
 
 import { validateEmail, validatePassword } from '../utils/validate'
 
-function Login({ isOpen, onClose }) {
+function Login({ isOpen, onClose, onLogin }) {
 
   const [disabled, setDisabled] = useState(false)
+
+  const history = useHistory()
 
   const inputClassName =
   `
@@ -38,7 +41,14 @@ function Login({ isOpen, onClose }) {
   `
 
   function handleLoginSubmit(values) {
-    //TODO: submit login
+    onLogin(values.email, values.password)
+      .then(() => {
+        console.log('Success!')
+        history.push('/categories')
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
   }
 
   return (
