@@ -1,31 +1,41 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://127.0.0.1:8000/api/v1'
+class Api {
+  constructor({ baseUrl }) {
+    this._baseUrl = baseUrl
+  }
 
-const checkResponse = (res) => {
-  if (res.ok) {
-    return res
-  } else {
-    return Promise.reject(res.status)
+  _checkResponse = (res) => {
+    if (res.ok) {
+      return res
+    } else {
+      return Promise.reject(res.status)
+    }
+  }
+
+  register = (username, email, password) => {
+    return axios
+      .post(
+        `${this._baseUrl}/users/`,
+        {username, email, sex: 1, password},
+        {'Content-Type': 'application/json'}
+      )
+        .then(this._checkResponse)
+  }
+
+  login = (email, password) => {
+    return axios
+      .post(
+        `${this._baseUrl}/login/`,
+        {email, password},
+        {'Content-Type': 'application/json'}
+      )
+        .then(this._checkResponse)
   }
 }
 
-export const register = (username, email, password) => {
-  return axios
-    .post(
-      `${BASE_URL}/users/`,
-      {username, email, sex: 1, password},
-      {'Content-Type': 'application/json', mode: 'no-cors'}
-    )
-      .then(checkResponse)
-}
+const api = new Api({
+  baseUrl: 'http://127.0.0.1:8000/api/v1'
+})
 
-export const login = (email, password) => {
-  return axios
-    .post(
-      `${BASE_URL}/login/`,
-      {email, password},
-      {'Content-Type': 'application/json', mode: 'no-cors'}
-    )
-      .then(checkResponse)
-}
+export default api

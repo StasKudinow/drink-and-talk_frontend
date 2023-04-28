@@ -47,7 +47,7 @@ function Login({ isOpen, onClose, onLogin }) {
         history.push('/categories')
       })
       .catch((err) => {
-        console.log(`Ошибка: ${err}`)
+        throw new Error(`Ошибка: ${err}`)
       })
   }
 

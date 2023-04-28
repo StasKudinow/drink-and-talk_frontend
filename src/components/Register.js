@@ -45,7 +45,7 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
         console.log('Success!')
       })
       .catch((err) => {
-        console.log(`Ошибка: ${err}`)
+        throw new Error(`Ошибка: ${err}`)
       })
   }
 

@@ -14,7 +14,7 @@ import CreateBar from './CreateBar'
 import Profile from './Profile'
 import BarList from './BarList'
 
-import * as api from '../utils/api'
+import api from '../utils/api'
 
 
 function App() {
