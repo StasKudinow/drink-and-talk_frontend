@@ -12,7 +12,7 @@ function Bar() {
   function refreshPage() {
     let result = window.confirm('Выйти из бара?')
     if (result) {
-      history.push('/categories')
+      history.push('/barlist')
       window.location.reload()
     }
   }

@@ -6,32 +6,36 @@ class Api {
   }
 
   _checkResponse = (res) => {
-    if (res.ok) {
+    if (res.data) {
       return res
     } else {
+      console.log(res)
       return Promise.reject(res.status)
     }
   }
 
-  register = (username, email, password) => {
+  post(endPoint, data) {
     return axios
       .post(
-        `${this._baseUrl}/users/`,
-        {username, email, sex: 1, password},
+        `${this._baseUrl}/${endPoint}`,
+        data,
         {'Content-Type': 'application/json'}
       )
         .then(this._checkResponse)
   }
 
-  login = (email, password) => {
+  get(endPoint) {
     return axios
-      .post(
-        `${this._baseUrl}/login/`,
-        {email, password},
-        {'Content-Type': 'application/json'}
+      .get(
+        `${this._baseUrl}/${endPoint}`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
       )
-        .then(this._checkResponse)
+      .then(this._checkResponse)
   }
+
 }
 
 const api = new Api({

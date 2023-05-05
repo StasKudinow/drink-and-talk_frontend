@@ -42,7 +42,6 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
     onRegister(values.username, values.email, values.password)
       .then(() => {
         onLogin(values.email, values.password)
-        console.log('Success!')
       })
       .catch((err) => {
         throw new Error(`Ошибка: ${err}`)

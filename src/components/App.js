@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Switch, Route, useHistory } from 'react-router-dom'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -24,6 +24,8 @@ function App() {
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false)
   const [isChangePasswordPopupOpen, setIsChangePasswordPopupOpen] = useState(false)
   const [isCreateBarPopupOpen, setIsCreateBarPopupOpen] = useState(false)
+
+  const history = useHistory()
 
   function closeAllPopups() {
     setIsLoginPopupOpen(false)
@@ -50,23 +52,45 @@ function App() {
 
   function onLogout() {
     setLoggedIn(false)
+    localStorage.clear()
   }
 
   function onRegister(username, email, password) {
-    api.register(username, email, password)
+    return api.post('users/', {username, email, password})
       .then((res) => {
         return res
       })
   }
 
   function onLogin(email, password) {
-    api.login(email, password)
+    return api.post('token/login/', {email, password})
       .then((res) => {
-        if (res.auth_token) {
+        if (res.data.auth_token) {
+          localStorage.setItem('token', res.data.auth_token)
           setLoggedIn(true)
+          history.push('/categories')
         }
       })
   }
+
+  function checkToken() {
+    return api.get('users/me/')
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true)
+        }
+      })
+      .catch((err) => {
+        throw new Error(`Ошибка: ${err}`)
+      })
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
 
   return (
     <div className="max-w-full min-w-64 min-h-screen bg-white font-sans">
