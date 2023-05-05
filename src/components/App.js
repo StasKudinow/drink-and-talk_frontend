@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Switch, Route, useHistory } from 'react-router-dom'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -14,15 +14,18 @@ import CreateBar from './CreateBar'
 import Profile from './Profile'
 import BarList from './BarList'
 
+import api from '../utils/api'
 
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false)
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false)
   const [isChangePasswordPopupOpen, setIsChangePasswordPopupOpen] = useState(false)
   const [isCreateBarPopupOpen, setIsCreateBarPopupOpen] = useState(false)
+
+  const history = useHistory()
 
   function closeAllPopups() {
     setIsLoginPopupOpen(false)
@@ -49,7 +52,45 @@ function App() {
 
   function onLogout() {
     setLoggedIn(false)
+    localStorage.clear()
   }
+
+  function onRegister(username, email, password) {
+    return api.post('users/', {username, email, password})
+      .then((res) => {
+        return res
+      })
+  }
+
+  function onLogin(email, password) {
+    return api.post('token/login/', {email, password})
+      .then((res) => {
+        if (res.data.auth_token) {
+          localStorage.setItem('token', res.data.auth_token)
+          setLoggedIn(true)
+          history.push('/categories')
+        }
+      })
+  }
+
+  function checkToken() {
+    return api.get('users/me/')
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true)
+        }
+      })
+      .catch((err) => {
+        throw new Error(`Ошибка: ${err}`)
+      })
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
 
   return (
     <div className="max-w-full min-w-64 min-h-screen bg-white font-sans">
@@ -102,11 +143,14 @@ function App() {
         isOpen={isRegisterPopupOpen}
         onClose={closeAllPopups}
         isLoginClick={handleLoginPopupOpen}
+        onRegister={onRegister}
+        onLogin={onLogin}
       />
 
       <Login
         isOpen={isLoginPopupOpen}
         onClose={closeAllPopups}
+        onLogin={onLogin}
       />
 
       <ChangePassword

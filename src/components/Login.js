@@ -6,7 +6,7 @@ import Button from './Button'
 
 import { validateEmail, validatePassword } from '../utils/validate'
 
-function Login({ isOpen, onClose }) {
+function Login({ isOpen, onClose, onLogin }) {
 
   const [disabled, setDisabled] = useState(false)
 
@@ -38,7 +38,10 @@ function Login({ isOpen, onClose }) {
   `
 
   function handleLoginSubmit(values) {
-    //TODO: submit login
+    onLogin(values.email, values.password)
+      .catch((err) => {
+        throw new Error(`Ошибка: ${err}`)
+      })
   }
 
   return (
