@@ -7,8 +7,7 @@ import chRes480 from '../images/icons/iconShit480.jpg'
 import chRes720 from '../images/icons/iconShit720.png'
 
 
-const stream = new VideoController(1920, 1080)
-
+const stream = new VideoController(1280, 720)
 
 export default function VideoBlock() {
   const [error, setError] = useState(null)
@@ -26,12 +25,16 @@ export default function VideoBlock() {
       })
   }, [])
 
-  const changeResolution = async (width, height) => {
+  const [isHD, setIsHD] = useState(true)
+
+  const changeResolution = async () => {
     try {
       const newStream = await stream.changeResolution(
-        width,
-        height
+        isHD
+          ? { width: 1280, height: 720 }
+          : { width: 640, height: 480 }
       )
+      setIsHD(!isHD)
       const videoElement = document.querySelector('video')
       videoElement.srcObject = newStream
     } catch (err) {
@@ -39,39 +42,36 @@ export default function VideoBlock() {
     }
   }
 
-    const [isMicOn, setIsMicOn] = useState(true)
+  const [isMicOn, setIsMicOn] = useState(true)
 
-    const toggleMic = () => {
-      const streamObj = stream.muteToggler()
-      if (streamObj) {
-        streamObj.enabled = !isMicOn
-      }
-      setIsMicOn(!isMicOn)
+  const toggleMic = () => {
+    const streamObj = stream.muteToggler()
+    if (streamObj) {
+      streamObj.enabled = !isMicOn
     }
+    setIsMicOn(!isMicOn)
+  }
 
   return (
-    <div>
+    <div className="relative">
       <video
         autoPlay
         playsInline
-        className="relative w-full h-full border"></video>
+        className="w-full h-full border"></video>
       {error && <div className="text-red-500">{error}</div>}
-      <button
-        onClick={() => changeResolution(640, 480)}
-        className="absolute top-[45%] left-[22%]">
-        <img src={chRes480} alt="mic" />
-      </button>
-      <button
-        onClick={() => changeResolution(800, 480)}
-        className="absolute top-[45%] left-[26%]">
-        <img src={chRes720} alt="mic" />
-      </button>
-      <button
-        className="absolute top-[45%] left-[30%] w-8 h-8"
-        onClick={toggleMic}
-        type="button">
-        <img src={isMicOn ? micOn : micOff} alt="mic" />
-      </button>
+      <div className="absolute bottom-2 right-2">
+        <button
+          onClick={() => changeResolution()}
+          className="w-5 h-5">
+          <img
+            src={!isHD ? chRes720 : chRes480}
+            alt="mic"
+          />
+        </button>
+        <button onClick={toggleMic} type="button">
+          <img src={isMicOn ? micOn : micOff} alt="mic" />
+        </button>
+      </div>
     </div>
   )
 }
