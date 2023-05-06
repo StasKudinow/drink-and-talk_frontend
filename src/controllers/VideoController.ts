@@ -2,16 +2,19 @@ class VideoController {
   private stream?: MediaStream
 
   constructor(private width: number, private height: number) {}
-
+  private isMuted = true
+	
   public async getVideoStream(): Promise<MediaStream> {
     try {
       this.stream = await navigator.mediaDevices.getUserMedia({
-        audio: false,
+        audio: true,
         video: {
           width: { ideal: this.width },
           height: { ideal: this.height },
         },
       })
+
+
       return this.stream
     } catch (err) {
       console.error('Error getting video stream:', err)
@@ -19,7 +22,7 @@ class VideoController {
     }
   }
 
-  public async changeResolution(width: number, height: number): Promise<MediaStream> {
+  public async changeResolution(resolution): Promise<MediaStream> {
     try {
       if (this.stream) {
         this.stream.getTracks().forEach((track) => {
@@ -27,12 +30,15 @@ class VideoController {
         })
       }
       this.stream = await navigator.mediaDevices.getUserMedia({
-        audio: false,
+        audio: true,
         video: {
-          width: { ideal: width },
-          height: { ideal: height },
+          width: { ideal: resolution.width },
+          height: { ideal: resolution.height },
         },
       })
+      if (!this.isMuted) {
+        this.stream.getAudioTracks()[0].enabled = false;
+      }
       return this.stream
     } catch (err) {
       console.error('Error changing video resolution:', err)
@@ -46,6 +52,13 @@ class VideoController {
         track.stop()
       })
       this.stream = undefined
+    }
+  }
+
+  public muteToggler() : void {
+    if (this.stream) {
+      this.stream.getAudioTracks()[0].enabled = !this.isMuted;
+      this.isMuted = !this.isMuted;
     }
   }
 }
