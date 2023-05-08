@@ -4,14 +4,24 @@ import { Formik, Form, Field } from 'formik'
 import Popup from './Popup'
 import Button from './Button'
 
-import { validateLogin, validateEmail, validatePassword, validateConfirmPassword, validateCheckbox } from '../utils/validate'
+import {
+  validateLogin,
+  validateEmail,
+  validatePassword,
+  validateConfirmPassword,
+  validateCheckbox,
+} from '../utils/validate'
 
-function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
-
+function Register({
+  isOpen,
+  onClose,
+  isLoginClick,
+  onRegister,
+  onLogin,
+}) {
   const [disabled, setDisabled] = useState(false)
 
-  const inputClassName =
-    `
+  const inputClassName = `
       w-71
       h-10
       mb-4
@@ -23,8 +33,7 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
       rounded-default
     `
 
-  const errorInputClassName =
-    `
+  const errorInputClassName = `
       w-71
       h-10
       mb-4
@@ -39,7 +48,11 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
     `
 
   function handleRegisterSubmit(values) {
-    onRegister(values.username, values.email, values.password)
+    onRegister(
+      values.username,
+      values.email,
+      values.password
+    )
       .then(() => {
         onLogin(values.email, values.password)
       })
@@ -47,7 +60,6 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
         throw new Error(`Ошибка: ${err}`)
       })
   }
-
 
   function handleLoginClick() {
     onClose()
@@ -60,8 +72,7 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
       title="Регистрация"
       description="Пожалуйста введите ваши данные для регистрации на нашем сайте"
       isOpen={isOpen}
-      onClose={onClose}
-    >
+      onClose={onClose}>
       <Formik
         initialValues={{
           username: '',
@@ -69,19 +80,28 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
           password: '',
           confirmPassword: '',
         }}
-        onSubmit={(values, {resetForm}) => {
+        onSubmit={(values, { resetForm }) => {
           if (values.password === values.confirmPassword) {
             handleRegisterSubmit(values)
             resetForm()
             onClose()
           }
         }}
-        validateOnMount
-      >
-        {({ errors, touched, handleChange, values, isValid }) => (
+        validateOnMount>
+        {({
+          errors,
+          touched,
+          handleChange,
+          values,
+          isValid,
+        }) => (
           <Form noValidate>
             <Field
-              className={errors.username && touched.username ? errorInputClassName : inputClassName}
+              className={
+                errors.username && touched.username
+                  ? errorInputClassName
+                  : inputClassName
+              }
               type="text"
               name="username"
               placeholder="Логин"
@@ -91,7 +111,11 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
               required
             />
             <Field
-              className={errors.email && touched.email ? errorInputClassName : inputClassName}
+              className={
+                errors.email && touched.email
+                  ? errorInputClassName
+                  : inputClassName
+              }
               type="email"
               name="email"
               placeholder="Email"
@@ -101,7 +125,11 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
               required
             />
             <Field
-              className={errors.password && touched.password ? errorInputClassName : inputClassName}
+              className={
+                errors.password && touched.password
+                  ? errorInputClassName
+                  : inputClassName
+              }
               type="password"
               name="password"
               placeholder="Пароль"
@@ -111,13 +139,23 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
               required
             />
             <Field
-              className={errors.confirmPassword && touched.confirmPassword ? errorInputClassName : inputClassName}
+              className={
+                errors.confirmPassword &&
+                touched.confirmPassword
+                  ? errorInputClassName
+                  : inputClassName
+              }
               type="password"
               name="confirmPassword"
               placeholder="Повторите пароль"
               value={values.confirmPassword}
               onChange={handleChange}
-              validate={validateConfirmPassword}
+              validate={() =>
+                validateConfirmPassword(
+                  values.password,
+                  values.confirmPassword
+                )
+              }
               required
             />
             <label className="w-31 mb-4 flex gap-2 cursor-pointer">
@@ -128,14 +166,20 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
                 validate={validateCheckbox}
                 required
               />
-              <p className={`font-normal text-text-xsm-all leading-5 duration-300 ${values.toggle ? 'text-white' : 'text-gray'}`}>Мне есть 18 лет</p>
+              <p
+                className={`font-normal text-text-xsm-all leading-5 duration-300 ${
+                  values.toggle ? 'text-white' : 'text-gray'
+                }`}>
+                Мне есть 18 лет
+              </p>
             </label>
             <p className="mb-4 font-normal text-text-xsm-all leading-5 text-white">
               Или&nbsp;
               <button
                 type="button"
                 className="text-orange hover:text-gray duration-300"
-                onClick={handleLoginClick}>войдите
+                onClick={handleLoginClick}>
+                войдите
               </button>
               &nbsp;в аккаунт
             </p>
@@ -144,7 +188,11 @@ function Register({ isOpen, onClose, isLoginClick, onRegister, onLogin }) {
               variant="submit"
               handler="null"
               type="submit"
-              onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
+              onDisabled={
+                !isValid
+                  ? setDisabled(true)
+                  : setDisabled(false)
+              }
               disabled={disabled}
             />
           </Form>
