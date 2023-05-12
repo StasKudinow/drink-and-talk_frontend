@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 
 import { topics, drinks } from '../utils/costants'
 
 import Selector from './Selector'
 import Button from './Button'
+
+import { CurrentUserContext } from '../contexts/CurrentUserContext'
 
 function Categories() {
 
@@ -11,7 +13,7 @@ function Categories() {
   const [isLeftMenuOpen, setIsLeftMenuOpen] = useState(false)
   const [isRightMenuOpen, setIsRightMenuOpen] = useState(false)
 
-  console.log(selectedItems)
+  const currentUser = useContext(CurrentUserContext)
 
   function handleLeftMenuButtonClick() {
     setIsLeftMenuOpen(!isLeftMenuOpen)
@@ -24,7 +26,7 @@ function Categories() {
   return (
     <main className="container mx-auto w-222 flex flex-col items-center pt-20 pb-28">
       <p className="mb-7 text-h2-mob leading-h2-web text-black">
-        Привет, рады тебя видеть на нашем сервисе, чтобы мы могли подобрать
+        Привет <span className="text-h2-mob leading-h2-web text-orange">{currentUser.username}</span>, рады тебя видеть на нашем сервисе, чтобы мы могли подобрать
         для тебя собеседника, выбери нужные разделы ниже, а так же категорию
         напитков
       </p>

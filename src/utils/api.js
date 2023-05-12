@@ -19,36 +19,28 @@ class Api {
       .post(
         `${this._baseUrl}/${endPoint}`,
         data,
-        {'Content-Type': 'application/json'}
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
       )
         .then(this._checkResponse)
   }
 
   get(endPoint) {
-    console.log(localStorage.getItem('token'))
     return axios
       .get(
         `${this._baseUrl}/${endPoint}`,
         {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         }
       )
       .then(this._checkResponse)
   }
-
-  // getContent(token) {
-  //   console.log(token)
-  //   return axios
-  //     .get(
-  //       `${this._baseUrl}/users/me`,
-  //       {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': `Bearer ${token}`
-  //       }
-  //     )
-  //     .then(this._checkResponse)
-  // }
 
 }
 
