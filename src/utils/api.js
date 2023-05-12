@@ -25,6 +25,7 @@ class Api {
   }
 
   get(endPoint) {
+    console.log(localStorage.getItem('token'))
     return axios
       .get(
         `${this._baseUrl}/${endPoint}`,
@@ -35,6 +36,19 @@ class Api {
       )
       .then(this._checkResponse)
   }
+
+  // getContent(token) {
+  //   console.log(token)
+  //   return axios
+  //     .get(
+  //       `${this._baseUrl}/users/me`,
+  //       {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': `Bearer ${token}`
+  //       }
+  //     )
+  //     .then(this._checkResponse)
+  // }
 
 }
 

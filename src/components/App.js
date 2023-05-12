@@ -63,10 +63,11 @@ function App() {
   }
 
   function onLogin(email, password) {
-    return api.post('token/login/', {email, password})
+    return api.post('jwt/create/', {email, password})
       .then((res) => {
-        if (res.data.auth_token) {
-          localStorage.setItem('token', res.data.auth_token)
+        console.log(res.data)
+        if (res.data.access) {
+          localStorage.setItem('token', res.data.access)
           setLoggedIn(true)
           history.push('/categories')
         }
