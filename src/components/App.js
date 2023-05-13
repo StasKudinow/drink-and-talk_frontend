@@ -16,6 +16,8 @@ import BarList from './BarList'
 
 import api from '../utils/api'
 
+import { CurrentUserContext } from '../contexts/CurrentUserContext'
+
 
 function App() {
 
@@ -24,6 +26,7 @@ function App() {
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false)
   const [isChangePasswordPopupOpen, setIsChangePasswordPopupOpen] = useState(false)
   const [isCreateBarPopupOpen, setIsCreateBarPopupOpen] = useState(false)
+  const [currentUser, setCurrentUser] = useState({})
 
   const history = useHistory()
 
@@ -63,10 +66,10 @@ function App() {
   }
 
   function onLogin(email, password) {
-    return api.post('token/login/', {email, password})
+    return api.post('jwt/create/', {email, password})
       .then((res) => {
-        if (res.data.auth_token) {
-          localStorage.setItem('token', res.data.auth_token)
+        if (res.data.access) {
+          localStorage.setItem('token', res.data.access)
           setLoggedIn(true)
           history.push('/categories')
         }
@@ -92,76 +95,90 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    if (loggedIn) {
+      api.get('users/me/')
+        .then((res) => {
+          setCurrentUser(res.data)
+        })
+        .catch((err) => {
+          throw new Error(`Ошибка: ${err}`)
+        })
+    }
+  }, [loggedIn])
+
   return (
     <div className="max-w-full min-w-64 min-h-screen bg-white font-sans">
-      <Header
-        onPopupOpen={handleLoginPopupOpen}
-        loggedIn={loggedIn}
-        onLogout={onLogout}
-      />
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header
+          onPopupOpen={handleLoginPopupOpen}
+          loggedIn={loggedIn}
+          onLogout={onLogout}
+        />
 
-      <Switch>
+        <Switch>
 
-        <Route exact path="/">
-          <Main
-            onPopupOpen={handleRegisterPopupOpen}
+          <Route exact path="/">
+            <Main
+              onPopupOpen={handleRegisterPopupOpen}
+              loggedIn={loggedIn}
+            />
+          </Route>
+
+          <ProtectedRoute
+            path="/categories"
+            component={Categories}
             loggedIn={loggedIn}
           />
-        </Route>
 
-        <ProtectedRoute
-          path="/categories"
-          component={Categories}
-          loggedIn={loggedIn}
+          <ProtectedRoute
+            path="/bar"
+            component={Bar}
+            loggedIn={loggedIn}
+          />
+
+          <ProtectedRoute
+            path="/profile"
+            component={Profile}
+            loggedIn={loggedIn}
+            onPopupOpen={handleChangePasswordPopupOpen}
+          />
+
+          <ProtectedRoute
+            path="/barlist"
+            component={BarList}
+            loggedIn={loggedIn}
+            onPopupOpen={handleCreateBarPopupOpen}
+          />
+
+        </Switch>
+
+        <Footer />
+
+        <Register
+          isOpen={isRegisterPopupOpen}
+          onClose={closeAllPopups}
+          isLoginClick={handleLoginPopupOpen}
+          onRegister={onRegister}
+          onLogin={onLogin}
         />
 
-        <ProtectedRoute
-          path="/bar"
-          component={Bar}
-          loggedIn={loggedIn}
+        <Login
+          isOpen={isLoginPopupOpen}
+          onClose={closeAllPopups}
+          onLogin={onLogin}
         />
 
-        <ProtectedRoute
-          path="/profile"
-          component={Profile}
-          loggedIn={loggedIn}
-          onPopupOpen={handleChangePasswordPopupOpen}
+        <ChangePassword
+          isOpen={isChangePasswordPopupOpen}
+          onClose={closeAllPopups}
         />
 
-        <ProtectedRoute
-          path="/barlist"
-          component={BarList}
-          loggedIn={loggedIn}
-          onPopupOpen={handleCreateBarPopupOpen}
+        <CreateBar
+          isOpen={isCreateBarPopupOpen}
+          onClose={closeAllPopups}
         />
-
-      </Switch>
-
-      <Footer />
-
-      <Register
-        isOpen={isRegisterPopupOpen}
-        onClose={closeAllPopups}
-        isLoginClick={handleLoginPopupOpen}
-        onRegister={onRegister}
-        onLogin={onLogin}
-      />
-
-      <Login
-        isOpen={isLoginPopupOpen}
-        onClose={closeAllPopups}
-        onLogin={onLogin}
-      />
-
-      <ChangePassword
-        isOpen={isChangePasswordPopupOpen}
-        onClose={closeAllPopups}
-      />
-
-      <CreateBar
-        isOpen={isCreateBarPopupOpen}
-        onClose={closeAllPopups}
-      />
+      </CurrentUserContext.Provider>
     </div>
   )
 }

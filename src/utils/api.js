@@ -19,7 +19,11 @@ class Api {
       .post(
         `${this._baseUrl}/${endPoint}`,
         data,
-        {'Content-Type': 'application/json'}
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
       )
         .then(this._checkResponse)
   }
@@ -29,8 +33,10 @@ class Api {
       .get(
         `${this._baseUrl}/${endPoint}`,
         {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         }
       )
       .then(this._checkResponse)
