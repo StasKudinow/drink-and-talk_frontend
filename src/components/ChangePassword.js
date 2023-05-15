@@ -6,10 +6,9 @@ import Button from './Button'
 
 import { validatePassword, validateConfirmPassword, validateOldPassword } from '../utils/validate'
 
-function ChangePassword({ isOpen, onClose }) {
+function ChangePassword({ isOpen, onClose, onChangePassword }) {
 
   const [disabled, setDisabled] = useState(false)
-
   const inputClassName =
     `
       w-71
@@ -38,8 +37,15 @@ function ChangePassword({ isOpen, onClose }) {
       rounded-default
     `
 
-  function handleChangePasswordSubmit(values) {
-    //TODO: submit changePassword
+  function handleChangePasswordSubmit(values, {resetForm}) {
+    onChangePassword(values.password, values.oldPassword)
+      .then(() => {
+        resetForm()
+        onClose()
+      })
+      .catch((err) => {
+        throw new Error(`Ошибка: ${err}`)
+      })
   }
 
   return (
@@ -57,9 +63,7 @@ function ChangePassword({ isOpen, onClose }) {
         }}
         onSubmit={(values, {resetForm}) => {
           if (values.password === values.confirmPassword && values.password !== values.oldPassword) {
-            handleChangePasswordSubmit(values)
-            resetForm()
-            onClose()
+            handleChangePasswordSubmit(values, {resetForm})
           }
         }}
         validateOnMount
@@ -93,7 +97,12 @@ function ChangePassword({ isOpen, onClose }) {
               placeholder="Повторите пароль"
               value={values.confirmPassword}
               onChange={handleChange}
-              validate={validateConfirmPassword}
+              validate={() =>
+                validateConfirmPassword(
+                  values.password,
+                  values.confirmPassword
+                )
+              }
               required
             />
             <Button

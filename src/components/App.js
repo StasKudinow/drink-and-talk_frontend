@@ -27,6 +27,8 @@ function App() {
   const [isChangePasswordPopupOpen, setIsChangePasswordPopupOpen] = useState(false)
   const [isCreateBarPopupOpen, setIsCreateBarPopupOpen] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
+  const [tooltip, setTooltip] = useState(false)
+
 
   const history = useHistory()
 
@@ -88,6 +90,19 @@ function App() {
       })
   }
 
+  function handleChangePassword(newPassword, oldPassword) {
+    return api.changePass('users/set_password/', {
+      current_password: oldPassword,
+      new_password: newPassword
+    })
+      .then(() => {
+        setTooltip(true)
+        setTimeout(() => {
+          setTooltip(false);
+        }, '5000');
+      })
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -142,6 +157,7 @@ function App() {
             component={Profile}
             loggedIn={loggedIn}
             onPopupOpen={handleChangePasswordPopupOpen}
+            tooltip={tooltip}
           />
 
           <ProtectedRoute
@@ -172,6 +188,7 @@ function App() {
         <ChangePassword
           isOpen={isChangePasswordPopupOpen}
           onClose={closeAllPopups}
+          onChangePassword={handleChangePassword}
         />
 
         <CreateBar

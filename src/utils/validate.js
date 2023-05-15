@@ -26,10 +26,10 @@ export function validatePassword(value) {
   }
 }
 
-export function validateConfirmPassword(prevvalue, value) {
+export function validateConfirmPassword(prevValue, value) {
   if (!value) {
     return 'Заполните это поле'
-  } else if (prevvalue !== value) {
+  } else if (prevValue !== value) {
     return 'Пароли не совпадают'
   }
 }
