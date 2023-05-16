@@ -26,7 +26,6 @@ function Login({ isOpen, onClose, onLogin }) {
   `
     w-71
     h-10
-    mb-4
     p-3
     font-normal
     text-text-xsm-all
@@ -76,6 +75,13 @@ function Login({ isOpen, onClose, onLogin }) {
               validate={validateEmail}
               required
             />
+            {errors.email && touched.email && (
+              <span
+                className="font-light text-error text-error-red leading-5"
+              >
+                {errors.email}
+              </span>
+            )}
             <Field
               className={errors.password && touched.password ? errorInputClassName : inputClassName}
               type="password"
@@ -86,6 +92,13 @@ function Login({ isOpen, onClose, onLogin }) {
               validate={validatePassword}
               required
             />
+            {errors.password && touched.password && (
+              <span
+                className="font-light text-error text-error-red leading-5"
+              >
+                {errors.password}
+              </span>
+            )}
             <p className="mb-4 font-normal text-text-xsm-all leading-5 text-white">
               <a className="text-orange hover:text-gray duration-300" href="#forgot-password">Забыли</a> пароль?
             </p>

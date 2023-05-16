@@ -43,7 +43,6 @@ class Api {
   }
 
   changePass(endPoint, data) {
-    console.log(data)
     return axios
       .post(
         `${this._baseUrl}/${endPoint}`,

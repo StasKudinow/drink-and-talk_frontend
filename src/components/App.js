@@ -55,6 +55,13 @@ function App() {
     setIsCreateBarPopupOpen(true)
   }
 
+  function showTooltip() {
+    setTooltip(true)
+    setTimeout(() => {
+      setTooltip(false)
+    }, '5000')
+  }
+
   function onLogout() {
     setLoggedIn(false)
     localStorage.clear()
@@ -96,10 +103,7 @@ function App() {
       new_password: newPassword
     })
       .then(() => {
-        setTooltip(true)
-        setTimeout(() => {
-          setTooltip(false);
-        }, '5000');
+        showTooltip()
       })
   }
 

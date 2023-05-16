@@ -115,15 +115,16 @@ function Profile({ onPopupOpen, tooltip }) {
                 variant="submit-profile"
                 handler="null"
                 type="submit"
-                onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
+                onDisabled={
+                  !isValid || values.username === currentUser.username ?
+                  setDisabled(true) : setDisabled(false)
+                }
                 disabled={disabled}
               />
               {tooltip &&
-                <span
-                  className="font-normal text-text-sm-web leading-6 text-black text-center duration-300"
-                >
+                <p className="mt-4 font-normal text-text-sm-web leading-6 text-black text-center">
                   Данные были успешно изменены
-                </span>
+                </p>
               }
             </Form>
           )}

@@ -34,14 +34,6 @@ export function validateConfirmPassword(prevValue, value) {
   }
 }
 
-export function validateOldPassword(value) {
-  if (!value) {
-    return 'Заполните это поле'
-  } else if (!/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g.test(value)) {
-    return 'Пароль должен состоять минимум из 6 символов, содержать минимум 1 цифру, 1 латинскую букву в нижнем регистре, 1 латинскую букву в верхнем регистре'
-  }
-}
-
 export function validateCheckbox(value) {
   if (!value) {
     return 'Вам должно быть 18 лет'

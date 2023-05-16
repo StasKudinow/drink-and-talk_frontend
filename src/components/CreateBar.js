@@ -28,7 +28,6 @@ function CreateBar({ isOpen, onClose }) {
   `
     w-71
     h-10
-    mb-8
     p-3
     font-normal
     text-text-xsm-all
@@ -86,6 +85,13 @@ function CreateBar({ isOpen, onClose }) {
               validate={validateBarName}
               required
             />
+            {errors.barName && touched.barName && (
+              <span
+                className="mb-4 font-light text-error text-error-red leading-5"
+              >
+                {errors.barName}
+              </span>
+            )}
             <p className="mb-2 font-normal text-text-sm-web leading-6 text-white text-center">
               Добавить обложку (необязательно)
             </p>
