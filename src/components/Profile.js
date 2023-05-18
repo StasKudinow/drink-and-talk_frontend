@@ -121,7 +121,7 @@ function Profile({ onPopupOpen }) {
       <section className="w-108 flex flex-col">
         <div className="w-154 h-152 bg-dots_4 bg-cover absolute top-55 right-34" />
         <h2 className="mb-8 font-normal text-h2-mob leading-10 text-black">Камера</h2>
-        <div className="w-full h-76 mb-6 bg-gray rounded-lg z-10">
+        <div className="w-full h-76 mb-6 rounded-lg z-10">
           <VideoBlock />
         </div>
         <div className="flex justify-between">
