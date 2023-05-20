@@ -6,14 +6,13 @@ import micOff from '../images/icons/micOff.svg'
 import chRes480 from '../images/icons/iconShit480.jpg'
 import chRes720 from '../images/icons/iconShit720.png'
 
-
-const stream = new VideoController(1280, 720)
+const videoController = new VideoController(1280, 720)
 
 export default function VideoBlock() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    stream
+    videoController
       .getVideoStream()
       .then((stream) => {
         const videoElement = document.querySelector('video')
@@ -23,13 +22,16 @@ export default function VideoBlock() {
       .catch((err) => {
         setError(err.message)
       })
+    return () => {
+      videoController.closeVideoStream();
+    }
   }, [])
 
   const [isHD, setIsHD] = useState(true)
 
   const changeResolution = async () => {
     try {
-      const newStream = await stream.changeResolution(
+      const newStream = await videoController.changeResolution(
         isHD
           ? { width: 1280, height: 720 }
           : { width: 640, height: 480 }
@@ -45,7 +47,7 @@ export default function VideoBlock() {
   const [isMicOn, setIsMicOn] = useState(true)
 
   const toggleMic = () => {
-    const streamObj = stream.muteToggler()
+    const streamObj = videoController.muteToggler()
     if (streamObj) {
       streamObj.enabled = !isMicOn
     }
