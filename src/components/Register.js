@@ -36,7 +36,6 @@ function Register({
   const errorInputClassName = `
       w-71
       h-10
-      mb-4
       p-3
       font-normal
       text-text-xsm-all
@@ -110,6 +109,13 @@ function Register({
               validate={validateLogin}
               required
             />
+            {errors.username && touched.username && (
+              <span
+                className="font-light text-error text-error-red leading-5"
+              >
+                {errors.username}
+              </span>
+            )}
             <Field
               className={
                 errors.email && touched.email
@@ -124,6 +130,13 @@ function Register({
               validate={validateEmail}
               required
             />
+            {errors.email && touched.email && (
+              <span
+                className="font-light text-error text-error-red leading-5"
+              >
+                {errors.email}
+              </span>
+            )}
             <Field
               className={
                 errors.password && touched.password
@@ -138,6 +151,13 @@ function Register({
               validate={validatePassword}
               required
             />
+            {errors.password && touched.password && (
+              <span
+                className="font-light text-error text-error-red leading-5"
+              >
+                {errors.password}
+              </span>
+            )}
             <Field
               className={
                 errors.confirmPassword &&
@@ -158,7 +178,14 @@ function Register({
               }
               required
             />
-            <label className="w-31 mb-4 flex gap-2 cursor-pointer">
+            {errors.confirmPassword && touched.confirmPassword && (
+              <span
+                className="font-light text-error text-error-red leading-5"
+              >
+                {errors.confirmPassword}
+              </span>
+            )}
+            <label className="w-31 mb-4 flex gap-2 cursor-pointer relative">
               <Field
                 className="w-4 h-4 rounded-default cursor-pointer"
                 type="checkbox"
@@ -172,6 +199,13 @@ function Register({
                 }`}>
                 Мне есть 18 лет
               </p>
+              {errors.toggle && touched.toggle && (
+                <span
+                  className="font-light text-error text-error-red leading-5 absolute top-4 right-2"
+                >
+                  {errors.toggle}
+                </span>
+              )}
             </label>
             <p className="mb-4 font-normal text-text-xsm-all leading-5 text-white">
               Или&nbsp;

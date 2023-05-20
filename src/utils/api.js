@@ -39,7 +39,21 @@ class Api {
           }
         }
       )
-      .then(this._checkResponse)
+        .then(this._checkResponse)
+  }
+
+  changePass(endPoint, data) {
+    return axios
+      .post(
+        `${this._baseUrl}/${endPoint}`,
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      )
   }
 
 }

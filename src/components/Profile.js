@@ -1,14 +1,18 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Formik, Form, Field } from 'formik'
 
 import Button from './Button'
 import VideoBlock from './VideoBlock'
 
+import { CurrentUserContext } from '../contexts/CurrentUserContext'
+
 import { validateLogin } from '../utils/validate'
 
-function Profile({ onPopupOpen }) {
+function Profile({ onPopupOpen, tooltip }) {
 
   const [disabled, setDisabled] = useState(false)
+
+  const currentUser = useContext(CurrentUserContext)
 
   const inputClassName =
     `
@@ -49,7 +53,7 @@ function Profile({ onPopupOpen }) {
         <h2 className="mb-8 font-normal text-h2-mob leading-10 text-black">Редактировать профиль</h2>
         <Formik
           initialValues={{
-            login: ''
+            username: currentUser.username
           }}
           onSubmit={(values, {resetForm}) => {
             handleProfileSubmit(values)
@@ -60,11 +64,11 @@ function Profile({ onPopupOpen }) {
           {({ errors, touched, handleChange, values, isValid }) => (
             <Form noValidate>
               <Field
-                className={errors.login && touched.login ? errorInputClassName : inputClassName}
+                className={errors.username && touched.username ? errorInputClassName : inputClassName}
                 type="text"
-                name="login"
+                name="username"
                 placeholder="Ник"
-                value={values.login}
+                value={values.username}
                 onChange={handleChange}
                 validate={validateLogin}
                 required
@@ -100,7 +104,7 @@ function Profile({ onPopupOpen }) {
                 </label>
               </div>
               <button
-                className="mb-6 font-normal text-text-sm-web leading-6 text-black underline hover:opacity-50 duration-300"
+                className="mb-6 font-normal text-text-sm-web leading-6 text-black hover:opacity-50 duration-300"
                 type="button"
                 onClick={onPopupOpen}
               >
@@ -111,9 +115,17 @@ function Profile({ onPopupOpen }) {
                 variant="submit-profile"
                 handler="null"
                 type="submit"
-                onDisabled={!isValid ? setDisabled(true) : setDisabled(false)}
+                onDisabled={
+                  !isValid || values.username === currentUser.username ?
+                  setDisabled(true) : setDisabled(false)
+                }
                 disabled={disabled}
               />
+              {tooltip &&
+                <p className="mt-4 font-normal text-text-sm-web leading-6 text-black text-center">
+                  Данные были успешно изменены
+                </p>
+              }
             </Form>
           )}
         </Formik>
@@ -126,7 +138,7 @@ function Profile({ onPopupOpen }) {
         </div>
         <div className="flex justify-between">
           <Button
-            text="Начать видео - связь"
+            text="Начать видеосвязь"
             variant="black-button-profile"
             handler="null"
             type="button"

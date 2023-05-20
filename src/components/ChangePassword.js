@@ -4,9 +4,9 @@ import { Formik, Form, Field } from 'formik'
 import Popup from './Popup'
 import Button from './Button'
 
-import { validatePassword, validateConfirmPassword, validateOldPassword } from '../utils/validate'
+import { validatePassword, validateConfirmPassword } from '../utils/validate'
 
-function ChangePassword({ isOpen, onClose }) {
+function ChangePassword({ isOpen, onClose, onChangePassword }) {
 
   const [disabled, setDisabled] = useState(false)
 
@@ -27,7 +27,6 @@ function ChangePassword({ isOpen, onClose }) {
     `
       w-71
       h-10
-      mb-4
       p-3
       font-normal
       text-text-xsm-all
@@ -38,8 +37,15 @@ function ChangePassword({ isOpen, onClose }) {
       rounded-default
     `
 
-  function handleChangePasswordSubmit(values) {
-    //TODO: submit changePassword
+  function handleChangePasswordSubmit(values, {resetForm}) {
+    onChangePassword(values.password, values.oldPassword)
+      .then(() => {
+        resetForm()
+        onClose()
+      })
+      .catch((err) => {
+        throw new Error(`Ошибка: ${err}`)
+      })
   }
 
   return (
@@ -57,9 +63,7 @@ function ChangePassword({ isOpen, onClose }) {
         }}
         onSubmit={(values, {resetForm}) => {
           if (values.password === values.confirmPassword && values.password !== values.oldPassword) {
-            handleChangePasswordSubmit(values)
-            resetForm()
-            onClose()
+            handleChangePasswordSubmit(values, {resetForm})
           }
         }}
         validateOnMount
@@ -73,9 +77,16 @@ function ChangePassword({ isOpen, onClose }) {
               placeholder="Старый пароль"
               value={values.oldPassword}
               onChange={handleChange}
-              validate={validateOldPassword}
+              validate={validatePassword}
               required
             />
+            {errors.oldPassword && touched.oldPassword && (
+              <span
+                className="font-light text-error text-error-red leading-5"
+              >
+                {errors.oldPassword}
+              </span>
+            )}
             <Field
               className={errors.password && touched.password ? errorInputClassName : inputClassName}
               type="password"
@@ -86,6 +97,13 @@ function ChangePassword({ isOpen, onClose }) {
               validate={validatePassword}
               required
             />
+            {errors.password && touched.password && (
+              <span
+                className="font-light text-error text-error-red leading-5"
+              >
+                {errors.password}
+              </span>
+            )}
             <Field
               className={errors.confirmPassword && touched.confirmPassword ? errorInputClassName : inputClassName}
               type="password"
@@ -93,9 +111,21 @@ function ChangePassword({ isOpen, onClose }) {
               placeholder="Повторите пароль"
               value={values.confirmPassword}
               onChange={handleChange}
-              validate={validateConfirmPassword}
+              validate={() =>
+                validateConfirmPassword(
+                  values.password,
+                  values.confirmPassword
+                )
+              }
               required
             />
+            {errors.confirmPassword && touched.confirmPassword && (
+              <span
+                className="font-light text-error text-error-red leading-5"
+              >
+                {errors.confirmPassword}
+              </span>
+            )}
             <Button
               text="Сохранить изменения"
               variant="submit"

@@ -7,7 +7,7 @@ function Promo({ loggedIn, onPopupOpen}) {
   if (loggedIn) {
     promoButton =
       <Button
-        text="Начать видео - связь"
+        text="Начать видеосвязь"
         variant="black-button"
         handler="link"
         type="button"
@@ -16,7 +16,7 @@ function Promo({ loggedIn, onPopupOpen}) {
   } else {
     promoButton =
       <Button
-        text="Начать видео - связь"
+        text="Начать видеосвязь"
         variant="black-button"
         handler="open-popup"
         type="button"

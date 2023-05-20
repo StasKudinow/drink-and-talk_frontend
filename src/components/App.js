@@ -27,6 +27,8 @@ function App() {
   const [isChangePasswordPopupOpen, setIsChangePasswordPopupOpen] = useState(false)
   const [isCreateBarPopupOpen, setIsCreateBarPopupOpen] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
+  const [tooltip, setTooltip] = useState(false)
+
 
   const history = useHistory()
 
@@ -51,6 +53,13 @@ function App() {
 
   function handleCreateBarPopupOpen() {
     setIsCreateBarPopupOpen(true)
+  }
+
+  function showTooltip() {
+    setTooltip(true)
+    setTimeout(() => {
+      setTooltip(false)
+    }, '5000')
   }
 
   function onLogout() {
@@ -85,6 +94,16 @@ function App() {
       })
       .catch((err) => {
         throw new Error(`Ошибка: ${err}`)
+      })
+  }
+
+  function handleChangePassword(newPassword, oldPassword) {
+    return api.changePass('users/set_password/', {
+      current_password: oldPassword,
+      new_password: newPassword
+    })
+      .then(() => {
+        showTooltip()
       })
   }
 
@@ -142,6 +161,7 @@ function App() {
             component={Profile}
             loggedIn={loggedIn}
             onPopupOpen={handleChangePasswordPopupOpen}
+            tooltip={tooltip}
           />
 
           <ProtectedRoute
@@ -172,6 +192,7 @@ function App() {
         <ChangePassword
           isOpen={isChangePasswordPopupOpen}
           onClose={closeAllPopups}
+          onChangePassword={handleChangePassword}
         />
 
         <CreateBar
